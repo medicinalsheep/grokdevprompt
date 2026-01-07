@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrokDevPrompt</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a192f;
+            color: #ccd6f6;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #112240;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        }
+        h1 {
+            text-align: center;
+            color: #64ffda;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #233554;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #334d6e;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background: #233554;
+            color: #ccd6f6;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #64ffda;
+            outline: none;
+        }
+        textarea {
+            height: 140px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 30px;
+            padding: 14px 28px;
+            background: #64ffda;
+            color: #0a192f;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            background: #52d6b8;
+            transform: translateY(-2px);
+        }
+        #output {
+            margin-top: 40px;
+            padding: 20px;
+            background: #233554;
+            border: 1px solid #64ffda;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            color: #ccd6f6;
+            display: none;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        #copyBtn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #64ffda;
+            color: #0a192f;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: auto;
+            display: none;
+        }
+        #copyBtn:hover {
+            background: #52d6b8;
+            transform: translateY(-2px);
+        }
+        .checkbox-group {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            font-weight: normal;
+            color: #ccd6f6;
+            cursor: pointer;
+        }
+        .checkbox-group input {
+            margin-right: 12px;
+            width: auto;
+            accent-color: #64ffda;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            margin-left: 5px;
+            color: #64ffda;
+            font-size: 1.1em;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #233554;
+            color: #ccd6f6;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        p {
+            color: #ccd6f6;
+            margin-bottom: 20px;
+        }
+        .intro-p {
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #8892b0;
+        }
+        footer a {
+            color: #64ffda;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #52d6b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GrokDevPrompt</h1>
+        <p class="intro-p">Craft detailed, spec-driven prompts for Grok to build games, apps, tools, and more. Perfect for beginners and pros alike—fill in details, check features, and generate!</p>
+
+    <h2>Step 1: Project Basics</h2>
+    <p>Define the core of your project. Keep it simple if you're new to this.</p>
+
+    <label for="projectType">Project Type <span class="tooltip">?<span class="tooltiptext">Pick the best fit for your idea, like 'Game' for interactive fun.</span></span></label>
+    <select id="projectType">
+        <option value="web app">Web Application (browser-based tool or site)</option>
+        <option value="mobile app">Mobile App (for phones, e.g., React Native)</option>
+        <option value="game">Game (2D/3D, e.g., shooter or puzzle)</option>
+        <option value="three.js tool">Three.js 3D Tool/Scene/Game (browser 3D graphics)</option>
+        <option value="desktop tool">Desktop Tool (computer program, e.g., Electron)</option>
+        <option value="cli tool">CLI Tool (command-line terminal app)</option>
+        <option value="other">Other (explain in description)</option>
+    </select>
+
+    <label for="title">Project Title/Name <span class="tooltip">?<span class="tooltiptext">A fun, memorable name for your creation.</span></span></label>
+    <input type="text" id="title" placeholder="e.g., Space Invaders Remake or Task Tracker App">
+
+    <label for="description">High-Level Description <span class="tooltip">?<span class="tooltiptext">What does it do? Who's it for? Keep it concise.</span></span></label>
+    <textarea id="description" placeholder="e.g., A thrilling 2D game to battle aliens. For casual players. Or: An app to manage daily tasks with ease."></textarea>
+
+    <h2>Step 2: Features</h2>
+    <p>Check common features or add custom ones. Mix and match for your perfect project.</p>
+
+    <div class="checkbox-group" id="commonFeatures">
+        <label><input type="checkbox" value="User login and registration"> User login and registration (e.g., email sign-up)</label>
+        <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design (mobile & desktop friendly)</label>
+        <label><input type="checkbox" value="Dark mode toggle"> Dark mode toggle (light/dark theme switch)</label>
+        <label><input type="checkbox" value="Score tracking or progress saving"> Score tracking or progress saving</label>
+        <label><input type="checkbox" value="Sound effects and music"> Sound effects and music</label>
+        <label><input type="checkbox" value="Multiplayer support"> Multiplayer support (e.g., online play)</label>
+        <label><input type="checkbox" value="Data storage (e.g., local or database)"> Data storage (e.g., save user info)</label>
+        <label><input type="checkbox" value="Animations and transitions"> Animations and smooth transitions</label>
+        <label><input type="checkbox" value="Search functionality"> Search functionality</label>
+        <label><input type="checkbox" value="Notifications or alerts"> Notifications or alerts</label>
+        <label><input type="checkbox" value="Sharing options (e.g., social media)"> Sharing options (e.g., social media)</label>
+        <label><input type="checkbox" value="Accessibility features (e.g., screen reader support)"> Accessibility features (e.g., for visual impairments)</label>
+    </div>
+
+    <label for="customFeatures">Custom Features (one per line) <span class="tooltip">?<span class="tooltiptext">Unique ideas, like 'Keyboard controls for movement'.</span></span></label>
+    <textarea id="customFeatures" placeholder="e.g., Arrow key movement&#10;Spacebar shooting&#10;Power-ups"></textarea>
+
+    <h2>Step 3: Tech & Details</h2>
+    <p>Optional for non-tech users—Grok handles the rest. Specify if you have preferences.</p>
+
+    <label for="techStack">Tech Stack / Libraries (comma-separated) <span class="tooltip">?<span class="tooltiptext">e.g., HTML, CSS, JavaScript, Three.js. Leave blank for Grok's choice.</span></span></label>
+    <input type="text" id="techStack" placeholder="e.g., HTML, CSS, JavaScript, React (optional)">
+
+    <label for="requirements">Non-Functional Requirements <span class="tooltip">?<span class="tooltiptext">e.g., Fast performance, browser compatibility.</span></span></label>
+    <textarea id="requirements" placeholder="e.g., Mobile-friendly&#10;60 FPS performance&#10;Single file if possible (optional)"></textarea>
+
+    <label for="additional">Additional Instructions / Constraints <span class="tooltip">?<span class="tooltiptext">e.g., Add code comments, no external libs.</span></span></label>
+    <textarea id="additional" placeholder="e.g., Use ES6+ syntax&#10;Include explanations&#10;Keep it simple (optional)"></textarea>
+
+    <button onclick="generatePrompt()">Generate Grok Prompt</button>
+
+    <div id="output"></div>
+    <button id="copyBtn" onclick="copyPrompt()">Copy to Clipboard</button>
+
+    <footer>Made in USA using <a href="https://grok.x.ai" target="_blank">Grok</a></footer>
+</div>
+
+<script>
+    function generatePrompt() {
+        const type = document.getElementById('projectType').value;
+        const title = document.getElementById('title').value.trim() || 'My Project';
+        const desc = document.getElementById('description').value.trim() || 'A complete project based on the specifications below.';
+        const customFeatures = document.getElementById('customFeatures').value.trim();
+
+        const checkboxes = document.querySelectorAll('#commonFeatures input[type="checkbox"]:checked');
+        let commonFeaturesList = Array.from(checkboxes).map(cb => cb.value).join('\n');
+
+        let allFeatures = (commonFeaturesList ? commonFeaturesList + '\n' : '') + (customFeatures || '');
+
+        const tech = document.getElementById('techStack').value.trim();
+        const reqs = document.getElementById('requirements').value.trim();
+        const add = document.getElementById('additional').value.trim();
+
+        let prompt = `You are an expert full-stack developer and game/engine programmer, specializing in complete, production-ready projects.Develop a complete, standalone ${type.replace('three.js tool', 'Three.js-based 3D tool/scene/game')} titled "${title}".High-level description: ${desc}Key features:
+${allFeatures || '(None specified)'}Tech stack and libraries to use: ${tech || 'Pure HTML/CSS/JS (or appropriate for the project type)'}Non-functional requirements:
+${reqs || '(None specified)'}Additional instructions:
+${add || '(None specified)'}Follow spec-driven development best practices:First, create a detailed Development Plan: break down into modules/components, architecture overview, file structure.
+Then, provide a step-by-step Implementation Checklist with testable tasks.
+Implement the full code iteratively: start with core structure, then add features one by one.
+For each major part, provide complete, working code in a single response if possible (e.g., single HTML file for web/Three.js projects).
+Include all necessary HTML, CSS, JavaScript (and other files if needed).
+Make it responsive, performant, and polished.
+Add comments explaining key parts.
+At the end, provide instructions on how to run/test it.
+If it's a game or interactive tool, ensure it's engaging and bug-free.
+
+Output the full implementation in fenced code blocks, ready to copy and run. Do not truncate.`;        const output = document.getElementById('output');
+        output.textContent = prompt;
+        output.style.display = 'block';
+        document.getElementById('copyBtn').style.display = 'block';
+    }
+
+    function copyPrompt() {
+        const output = document.getElementById('output');
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            alert('Prompt copied to clipboard!');
+        });
+    }
+</script></body>
+</html>
+
