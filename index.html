@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrokDevPrompt</title>
+    <title>GrokDevPrompt v0.1</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -160,6 +160,11 @@
             font-size: 1.1em;
             margin-bottom: 30px;
         }
+        .warning {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
         footer {
             text-align: center;
             margin-top: 50px;
@@ -178,7 +183,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>GrokDevPrompt</h1>
+        <h1>GrokDevPrompt v0.1</h1>
         <p class="intro-p">Craft detailed, spec-driven prompts for Grok to build games, apps, tools, and more. Perfect for beginners and pros alike—fill in details, check features, and generate!</p>
 
     <h2>Step 1: Project Basics</h2>
@@ -187,11 +192,20 @@
     <label for="projectType">Project Type <span class="tooltip">?<span class="tooltiptext">Pick the best fit for your idea, like 'Game' for interactive fun.</span></span></label>
     <select id="projectType">
         <option value="web app">Web Application (browser-based tool or site)</option>
-        <option value="mobile app">Mobile App (for phones, e.g., React Native)</option>
-        <option value="game">Game (2D/3D, e.g., shooter or puzzle)</option>
+        <option value="mobile app">Mobile App (for phones, e.g., React Native or Flutter)</option>
+        <option value="game">Game (2D/3D, e.g., shooter or puzzle in pure JS or Canvas)</option>
         <option value="three.js tool">Three.js 3D Tool/Scene/Game (browser 3D graphics)</option>
-        <option value="desktop tool">Desktop Tool (computer program, e.g., Electron)</option>
-        <option value="cli tool">CLI Tool (command-line terminal app)</option>
+        <option value="unity game">Unity Game (cross-platform, e.g., with C# scripting)</option>
+        <option value="unreal engine project">Unreal Engine Project (high-fidelity games or simulations)</option>
+        <option value="vr/ar app">VR/AR App (e.g., using A-Frame, AR.js, or Unity XR)</option>
+        <option value="ai/ml tool">AI/ML Tool (e.g., model training interface with TensorFlow.js or PyTorch)</option>
+        <option value="blockchain app">Blockchain App (e.g., dApp with Web3.js or Solidity)</option>
+        <option value="desktop tool">Desktop Tool (computer program, e.g., Electron or .NET)</option>
+        <option value="cli tool">CLI Tool (command-line terminal app, e.g., Node.js or Python)</option>
+        <option value="game mod">Game Mod (modification for existing engines like Unity or Minecraft)</option>
+        <option value="steam integrated app">Steam Integrated App (with Steamworks API for achievements, multiplayer)</option>
+        <option value="iot device tool">IoT Device Tool (e.g., Raspberry Pi or Arduino integration)</option>
+        <option value="api service">API Service (backend, e.g., Node.js Express or FastAPI)</option>
         <option value="other">Other (explain in description)</option>
     </select>
 
@@ -204,20 +218,35 @@
     <h2>Step 2: Features</h2>
     <p>Check common features or add custom ones. Mix and match for your perfect project.</p>
 
-    <div class="checkbox-group" id="commonFeatures">
-        <label><input type="checkbox" value="User login and registration"> User login and registration (e.g., email sign-up)</label>
-        <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design (mobile & desktop friendly)</label>
-        <label><input type="checkbox" value="Dark mode toggle"> Dark mode toggle (light/dark theme switch)</label>
-        <label><input type="checkbox" value="Score tracking or progress saving"> Score tracking or progress saving</label>
-        <label><input type="checkbox" value="Sound effects and music"> Sound effects and music</label>
-        <label><input type="checkbox" value="Multiplayer support"> Multiplayer support (e.g., online play)</label>
-        <label><input type="checkbox" value="Data storage (e.g., local or database)"> Data storage (e.g., save user info)</label>
-        <label><input type="checkbox" value="Animations and transitions"> Animations and smooth transitions</label>
-        <label><input type="checkbox" value="Search functionality"> Search functionality</label>
-        <label><input type="checkbox" value="Notifications or alerts"> Notifications or alerts</label>
-        <label><input type="checkbox" value="Sharing options (e.g., social media)"> Sharing options (e.g., social media)</label>
-        <label><input type="checkbox" value="Accessibility features (e.g., screen reader support)"> Accessibility features (e.g., for visual impairments)</label>
-    </div>
+<div class="checkbox-group" id="commonFeatures">
+    <label><input type="checkbox" value="User login and registration"> User login and registration (e.g., email sign-up)</label>
+    <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design (mobile & desktop friendly)</label>
+    <label><input type="checkbox" value="Dark mode toggle"> Dark mode toggle (light/dark theme switch)</label>
+    <label><input type="checkbox" value="Score tracking or progress saving"> Score tracking or progress saving</label>
+    <label><input type="checkbox" value="Sound effects and music"> Sound effects and music</label>
+    <label><input type="checkbox" value="Multiplayer support"> Multiplayer support (e.g., online play)</label>
+    <label><input type="checkbox" value="Data storage (e.g., local or database)"> Data storage (e.g., save user info)</label>
+    <label><input type="checkbox" value="Animations and transitions"> Animations and smooth transitions</label>
+    <label><input type="checkbox" value="Search functionality"> Search functionality</label>
+    <label><input type="checkbox" value="Notifications or alerts"> Notifications or alerts</label>
+    <label><input type="checkbox" value="Sharing options (e.g., social media)"> Sharing options (e.g., social media)</label>
+    <label><input type="checkbox" value="Accessibility features (e.g., screen reader support)"> Accessibility features (e.g., for visual impairments)</label>
+    <label><input type="checkbox" value="High-resolution graphics support (e.g., 4K, retina)"> High-resolution graphics support (e.g., 4K, retina)</label>
+    <label><input type="checkbox" value="Cross-platform compatibility (e.g., web, mobile, desktop)"> Cross-platform compatibility (e.g., web, mobile, desktop)</label>
+    <label><input type="checkbox" value="AI integration (e.g., machine learning models)"> AI integration (e.g., machine learning models)</label>
+    <label><input type="checkbox" value="VR/AR support"> VR/AR support</label>
+    <label><input type="checkbox" value="Monetization features (e.g., in-app purchases, ads)"> Monetization features (e.g., in-app purchases, ads)</label>
+    <label><input type="checkbox" value="Analytics and tracking (e.g., Google Analytics)"> Analytics and tracking (e.g., Google Analytics)</label>
+    <label><input type="checkbox" value="Cloud syncing (e.g., Firebase or AWS)"> Cloud syncing (e.g., Firebase or AWS)</label>
+    <label><input type="checkbox" value="Procedural generation (e.g., for levels or content)"> Procedural generation (e.g., for levels or content)</label>
+    <label><input type="checkbox" value="Modding support (e.g., user-created content)"> Modding support (e.g., user-created content)</label>
+    <label><input type="checkbox" value="Steamworks integration (e.g., achievements, leaderboards)"> Steamworks integration (e.g., achievements, leaderboards)</label>
+    <label><input type="checkbox" value="Physics engine (e.g., Box2D or Unity Physics)"> Physics engine (e.g., Box2D or Unity Physics)</label>
+    <label><input type="checkbox" value="Internationalization (i18n) and localization"> Internationalization (i18n) and localization</label>
+    <label><input type="checkbox" value="Offline support (e.g., PWA or local caching)"> Offline support (e.g., PWA or local caching)</label>
+    <label><input type="checkbox" value="Security features (e.g., encryption, authentication)"> Security features (e.g., encryption, authentication)</label>
+    <label><input type="checkbox" value="Performance optimization (e.g., lazy loading)"> Performance optimization (e.g., lazy loading)</label>
+</div>
 
     <label for="customFeatures">Custom Features (one per line) <span class="tooltip">?<span class="tooltiptext">Unique ideas, like 'Keyboard controls for movement'.</span></span></label>
     <textarea id="customFeatures" placeholder="e.g., Arrow key movement&#10;Spacebar shooting&#10;Power-ups"></textarea>
@@ -234,6 +263,13 @@
     <label for="additional">Additional Instructions / Constraints <span class="tooltip">?<span class="tooltiptext">e.g., Add code comments, no external libs.</span></span></label>
     <textarea id="additional" placeholder="e.g., Use ES6+ syntax&#10;Include explanations&#10;Keep it simple (optional)"></textarea>
 
+    <h2>Experimental Features</h2>
+    <p class="warning">Warning: You might go down the rabbit hole!</p>
+    <div class="checkbox-group" id="experimentalFeatures">
+        <label><input type="checkbox" id="truncateCheckbox" value="truncate"> Truncate or multiple response</label>
+        <label><input type="checkbox" id="selfImproveCheckbox" value="self-improve"> Prompt self-improvement loop <span class="tooltip">⚠️<span class="tooltiptext">This will give you a new prompt generator tool until you uncheck this box. It creates a loop for iterative improvement.</span></span></label>
+    </div>
+
     <button onclick="generatePrompt()">Generate Grok Prompt</button>
 
     <div id="output"></div>
@@ -244,6 +280,7 @@
 
 <script>
     function generatePrompt() {
+        // Collect standard inputs
         const type = document.getElementById('projectType').value;
         const title = document.getElementById('title').value.trim() || 'My Project';
         const desc = document.getElementById('description').value.trim() || 'A complete project based on the specifications below.';
@@ -258,20 +295,51 @@
         const reqs = document.getElementById('requirements').value.trim();
         const add = document.getElementById('additional').value.trim();
 
-        let prompt = `You are an expert full-stack developer and game/engine programmer, specializing in complete, production-ready projects.Develop a complete, standalone ${type.replace('three.js tool', 'Three.js-based 3D tool/scene/game')} titled "${title}".High-level description: ${desc}Key features:
-${allFeatures || '(None specified)'}Tech stack and libraries to use: ${tech || 'Pure HTML/CSS/JS (or appropriate for the project type)'}Non-functional requirements:
-${reqs || '(None specified)'}Additional instructions:
-${add || '(None specified)'}Follow spec-driven development best practices:First, create a detailed Development Plan: break down into modules/components, architecture overview, file structure.
-Then, provide a step-by-step Implementation Checklist with testable tasks.
-Implement the full code iteratively: start with core structure, then add features one by one.
-For each major part, provide complete, working code in a single response if possible (e.g., single HTML file for web/Three.js projects).
-Include all necessary HTML, CSS, JavaScript (and other files if needed).
-Make it responsive, performant, and polished.
-Add comments explaining key parts.
-At the end, provide instructions on how to run/test it.
-If it's a game or interactive tool, ensure it's engaging and bug-free.
+        // Check experimental features
+        const isTruncate = document.getElementById('truncateCheckbox').checked;
+        const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
 
-Output the full implementation in fenced code blocks, ready to copy and run. Do not truncate.`;        const output = document.getElementById('output');
+        let prompt;
+
+        if (isSelfImprove) {
+            // Generate self-improvement prompt: List user inputs and instruct to create improved tool
+            prompt = `User inputs from current GrokDevPrompt tool:\n` +
+                     `- Project Type: ${type}\n` +
+                     `- Title: ${title}\n` +
+                     `- Description: ${desc}\n` +
+                     `- Features: ${allFeatures || '(None specified)'}\n` +
+                     `- Tech Stack: ${tech || '(None specified)'}\n` +
+                     `- Non-Functional Requirements: ${reqs || '(None specified)'}\n` +
+                     `- Additional Instructions: ${add || '(None specified)'}\n\n` +
+                     `Reference the base tool at: https://medicinalsheep.github.io/grokdevprompt/\n\n` +
+                     `Take these variables and run them through the tool. Provide a complete new prompt generator tool in the same format as https://medicinalsheep.github.io/grokdevprompt/ (single HTML file with CSS and JS), but add more questions specific to the project type "${type}", description, and entered details so far. The goal is to create a more improved, spec-driven prompt generator with deeper customization for this project. Output the full new HTML file ready to use.`;
+        } else {
+            // Standard prompt generation
+            let responseStyle = isTruncate ?
+                `Implement the full code iteratively: start with core structure, then add features one by one. Responses can be truncated if needed; comment truncated sections as // TRUNCATED and end with: "Reply 'ready' for the next part." Do not specify single response.` :
+                `Implement the full code iteratively: start with core structure, then add features one by one. For each major part, provide complete, working code in a single response if possible (e.g., single HTML file for web/Three.js projects).`;
+
+            prompt = `You are an expert full-stack developer and game/engine programmer, specializing in complete, production-ready projects.\n` +
+                     `Develop a complete, standalone ${type.replace('three.js tool', 'Three.js-based 3D tool/scene/game')} titled "${title}".\n` +
+                     `High-level description: ${desc}\n` +
+                     `Key features:\n${allFeatures || '(None specified)'}\n` +
+                     `Tech stack and libraries to use: ${tech || 'Pure HTML/CSS/JS (or appropriate for the project type)'}\n` +
+                     `Non-functional requirements:\n${reqs || '(None specified)'}\n` +
+                     `Additional instructions:\n${add || '(None specified)'}\n` +
+                     `Follow spec-driven development best practices:\n` +
+                     `First, create a detailed Development Plan: break down into modules/components, architecture overview, file structure.\n` +
+                     `Then, provide a step-by-step Implementation Checklist with testable tasks.\n` +
+                     `${responseStyle}\n` +
+                     `Include all necessary HTML, CSS, JavaScript (and other files if needed).\n` +
+                     `Make it responsive, performant, and polished.\n` +
+                     `Add comments explaining key parts.\n` +
+                     `At the end, provide instructions on how to run/test it.\n` +
+                     `If it's a game or interactive tool, ensure it's engaging and bug-free.\n\n` +
+                     `Output the full implementation in fenced code blocks, ready to copy and run. Do not truncate.`;
+        }
+
+        // Display the generated prompt
+        const output = document.getElementById('output');
         output.textContent = prompt;
         output.style.display = 'block';
         document.getElementById('copyBtn').style.display = 'block';
@@ -283,6 +351,6 @@ Output the full implementation in fenced code blocks, ready to copy and run. Do 
             alert('Prompt copied to clipboard!');
         });
     }
-</script></body>
+</script>
+</body>
 </html>
-
