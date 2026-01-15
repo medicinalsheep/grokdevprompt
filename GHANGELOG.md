@@ -5,6 +5,41 @@ All notable changes to GrokDevPrompt will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2] - 2026-01-14
+
+### Added
+
+- **Desired visual theme / style input field**  
+  New optional textarea: "Desired visual theme / style / color scheme for the final product"  
+  Appears only in self-improved versions of the tool (after using the self-improvement loop)  
+  Includes smart tooltip with examples (cyberpunk, minimalist light, retro 8-bit, corporate blue, etc.)  
+  Prevents forcing the GrokDevPrompt dark cyberpunk aesthetic onto generated projects unless explicitly wanted
+
+- **Smarter theme detection**  
+  The self-improvement prompt now checks existing inputs (description, tech stack, requirements, additional instructions) for theme-related keywords  
+  If detected, suggests pre-filling the new theme field with a best-guess value
+
+- **Better self-evolution targeting**  
+  Generated prompts now explicitly include the desired final product theme in the output prompt template  
+  Falls back gracefully to "modern, clean, professional default appropriate for [project type]" when left blank
+
+### Improved
+
+- Self-improvement loop logic made more robust and context-aware  
+  Better preservation of original prompt structure while layering in project-specific intelligence  
+  Clearer instructions to Grok about maintaining the tool's signature dark cyberpunk UI while decoupling it from the final product output
+
+### Fixed / Refined
+
+- More precise wording in the meta-prompt to avoid accidental theme bleed into generated projects
+- Enhanced guidance in tooltips for the new theme field to help users understand its purpose and power
+
+### Notes
+
+This version marks the first meaningful evolution produced via the self-improvement loop itself —  
+a nice little meta milestone for the tool's design philosophy.
+
+Happy rabbit-hole diving! 🌀
 ## [0.1] - 2026-01-14
 
 ### Added
