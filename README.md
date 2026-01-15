@@ -38,7 +38,7 @@ When you check **"Prompt self-improvement loop"**:
 
 ## How to Use
 
-1. Open `index.html` in any browser (or host it on GitHub Pages)
+1. Open `index.html` in any browser (or host it on GitHub Pages), or [here](https://github.com/medicinalsheep/grokdevprompt) 
 2. Fill in your project basics, features, tech, etc.
 3. (Optional) Enable experimental features
 4. Click **Generate Grok Prompt**
