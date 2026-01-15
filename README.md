@@ -54,4 +54,5 @@ MIT License — see [LICENSE](LICENSE)
 Made with love & curiosity in California  
 ✦ Powered by Grok (xAI) ✦  
 https://github.com/medicinalsheep/grokdevprompt
+
 Justin White / [medicinalsheep](https://github.com/medicinalsheep) / [@jyt1776](https://x.com/jyt1776)
