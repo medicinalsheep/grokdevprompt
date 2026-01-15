@@ -280,65 +280,108 @@
 
 <script>
     function generatePrompt() {
-        // Collect standard inputs
+        // Collect inputs
         const type = document.getElementById('projectType').value;
         const title = document.getElementById('title').value.trim() || 'My Project';
         const desc = document.getElementById('description').value.trim() || 'A complete project based on the specifications below.';
-        const customFeatures = document.getElementById('customFeatures').value.trim();
-
-        const checkboxes = document.querySelectorAll('#commonFeatures input[type="checkbox"]:checked');
-        let commonFeaturesList = Array.from(checkboxes).map(cb => cb.value).join('\n');
-
-        let allFeatures = (commonFeaturesList ? commonFeaturesList + '\n' : '') + (customFeatures || '');
-
+        
+        const commonCheckboxes = document.querySelectorAll('#commonFeatures input[type="checkbox"]:checked');
+        const commonFeaturesList = Array.from(commonCheckboxes).map(cb => cb.value);
+        
+        const customFeatures = document.getElementById('customFeatures').value.trim().split('\n').filter(f => f.trim());
+        
+        let allFeatures = [...commonFeaturesList, ...customFeatures];
+        
         const tech = document.getElementById('techStack').value.trim();
         const reqs = document.getElementById('requirements').value.trim();
         const add = document.getElementById('additional').value.trim();
 
-        // Check experimental features
         const isTruncate = document.getElementById('truncateCheckbox').checked;
         const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
 
-        let prompt;
+        let prompt = '';
 
         if (isSelfImprove) {
-            // Generate self-improvement prompt: List user inputs and instruct to create improved tool
-            prompt = `User inputs from current GrokDevPrompt tool:\n` +
-                     `- Project Type: ${type}\n` +
-                     `- Title: ${title}\n` +
-                     `- Description: ${desc}\n` +
-                     `- Features: ${allFeatures || '(None specified)'}\n` +
-                     `- Tech Stack: ${tech || '(None specified)'}\n` +
-                     `- Non-Functional Requirements: ${reqs || '(None specified)'}\n` +
-                     `- Additional Instructions: ${add || '(None specified)'}\n\n` +
-                     `Reference the base tool at: https://medicinalsheep.github.io/grokdevprompt/\n\n` +
-                     `Take these variables and run them through the tool. Provide a complete new prompt generator tool in the same format as https://medicinalsheep.github.io/grokdevprompt/ (single HTML file with CSS and JS), but add more questions specific to the project type "${type}", description, and entered details so far. The goal is to create a more improved, spec-driven prompt generator with deeper customization for this project. Output the full new HTML file ready to use.`;
-        } else {
-            // Standard prompt generation
-            let responseStyle = isTruncate ?
-                `Implement the full code iteratively: start with core structure, then add features one by one. Responses can be truncated if needed; comment truncated sections as // TRUNCATED and end with: "Reply 'ready' for the next part." Do not specify single response.` :
-                `Implement the full code iteratively: start with core structure, then add features one by one. For each major part, provide complete, working code in a single response if possible (e.g., single HTML file for web/Three.js projects).`;
+            // ── Improved self-evolution prompt ───────────────────────────────────────
+            const hasThemeHint = 
+                /theme|color|style|aesthetic|dark|light|cyberpunk|minimal|retro|neon/i.test(
+                    desc + ' ' + tech + ' ' + reqs + ' ' + add
+                );
 
-            prompt = `You are an expert full-stack developer and game/engine programmer, specializing in complete, production-ready projects.\n` +
-                     `Develop a complete, standalone ${type.replace('three.js tool', 'Three.js-based 3D tool/scene/game')} titled "${title}".\n` +
-                     `High-level description: ${desc}\n` +
-                     `Key features:\n${allFeatures || '(None specified)'}\n` +
-                     `Tech stack and libraries to use: ${tech || 'Pure HTML/CSS/JS (or appropriate for the project type)'}\n` +
-                     `Non-functional requirements:\n${reqs || '(None specified)'}\n` +
-                     `Additional instructions:\n${add || '(None specified)'}\n` +
-                     `Follow spec-driven development best practices:\n` +
-                     `First, create a detailed Development Plan: break down into modules/components, architecture overview, file structure.\n` +
-                     `Then, provide a step-by-step Implementation Checklist with testable tasks.\n` +
-                     `${responseStyle}\n` +
-                     `Include all necessary HTML, CSS, JavaScript (and other files if needed).\n` +
-                     `Make it responsive, performant, and polished.\n` +
-                     `Add comments explaining key parts.\n` +
-                     `At the end, provide instructions on how to run/test it.\n` +
-                     `If it's a game or interactive tool, ensure it's engaging and bug-free.\n\n` +
-                     `Output the full implementation in fenced code blocks, ready to copy and run. Do not truncate.`;
+            prompt = `You are an expert prompt engineer and full-stack developer specializing in highly effective, spec-driven prompt generator tools for Grok.
+
+Create an **improved & more targeted version** of GrokDevPrompt (call it v0.2 or higher) that keeps the **exact same dark cyberpunk visual theme** (background #0a192f, container #112240, accents #64ffda, monospace output, tooltips, etc.) as the current tool — **but adds intelligence about the final product's desired look**.
+
+Current project context to specialize around:
+Project Type: ${type}
+Title: ${title}
+Description: ${desc}
+Common Features: ${commonFeaturesList.length > 0 ? commonFeaturesList.join(', ') : '(none)'}
+Custom Features: ${customFeatures.length > 0 ? customFeatures.join(', ') : '(none)'}
+Tech/Stack: ${tech || '(none)'}
+Non-functional: ${reqs || '(none)'}
+Additional: ${add || '(none)'}
+
+### Required Improvements:
+
+1. **Add a new optional input field** right after "Additional Instructions / Constraints":
+   <label for="finalTheme">Desired visual theme / style / color scheme for the final product <span class="tooltip">?<span class="tooltiptext">Examples: dark mode cyberpunk, light minimalist, retro 8-bit, neon vaporwave, corporate blue, high-contrast accessibility. Leave empty for sensible project defaults.</span></span></label>
+   <textarea id="finalTheme" placeholder="e.g., neon cyberpunk with purple accents\nor\nclean corporate light theme with blue primary"></textarea>
+
+2. If the current inputs already strongly indicate a theme (dark mode, retro, etc.), still add the field but pre-fill it with a best-guess value derived from the description/tech/requirements.
+
+3. In the **prompt generation logic** (the big string built when user clicks Generate):
+   - Add this line near the top of the output prompt:
+     Desired final product visual style/theme/color scheme: \${finalTheme || '(Use modern, clean, professional default appropriate for ${type})'}
+
+4. **Keep all previous improvements**:
+   - Project-specific feature checkboxes with benefit + side-effect tooltips
+   - Recommendations/guidance panel before the Generate button
+   - Self-improvement checkbox retained & **pre-checked by default**
+   - All original structure, truncate option support, etc.
+
+5. Update title to something like: "GrokDevPrompt v0.2 – ${type}-Specialized"
+
+6. Add at the end of the new HTML as comment:
+   <!-- Evolved via self-improvement loop from original GrokDevPrompt -->
+
+Output the **complete single-file HTML** (CSS + JS embedded) ready to save & open. Preserve the polished UX, responsiveness, and copy functionality. Do not truncate.`;
+        } else {
+            // Normal generation (unchanged from previous version)
+            let responseStyle = isTruncate ?
+                `Implement the full code iteratively: start with core structure, then add features one by one. Responses can be truncated if very long; mark truncated sections clearly with // TRUNCATED HERE and end each part with: "Reply 'ready' to continue with the next part."` :
+                `For each major part, provide complete, working code in a single response if possible (e.g., single HTML file for web/Three.js projects).`;
+
+            prompt = `You are an expert full-stack developer and game/engine programmer, specializing in complete, production-ready projects.
+
+Develop a complete, standalone ${type.replace('three.js tool', 'Three.js-based 3D tool/scene/game')} titled "${title}".
+
+High-level description: ${desc}
+
+Key features:
+${allFeatures.length > 0 ? allFeatures.join('\n') : '(None specified)'}
+
+Tech stack and libraries to use: ${tech || 'Pure HTML/CSS/JS (or appropriate for the project type)'}
+
+Non-functional requirements:
+${reqs || '(None specified)'}
+
+Additional instructions:
+${add || '(None specified)'}
+
+Follow spec-driven development best practices:
+First, create a detailed Development Plan: break down into modules/components, architecture overview, file structure.
+Then, provide a step-by-step Implementation Checklist with testable tasks.
+${responseStyle}
+Include all necessary HTML, CSS, JavaScript (and other files if needed).
+Make it responsive, performant, and polished.
+Add comments explaining key parts.
+At the end, provide instructions on how to run/test it.
+If it's a game or interactive tool, ensure it's engaging and bug-free.
+
+Output the full implementation in fenced code blocks, ready to copy and run. Do not truncate.`;
         }
 
-        // Display the generated prompt
         const output = document.getElementById('output');
         output.textContent = prompt;
         output.style.display = 'block';
