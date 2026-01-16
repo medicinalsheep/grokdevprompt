@@ -8,7 +8,7 @@ Single-file HTML tool — beautiful dark cyberpunk interface, zero dependencies,
 
 Perfect for beginners wanting quick quality results and advanced users who enjoy **limitless recursive prompt engineering experiments**.
 
-![screenshot](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot1.png)
+![screenshot](https://github.com/medicinalsheep/grokdevprompt/blob/5c4bca3cf1f8eb88d69a334de2373655e31b31e1/screenshots/screenshot1.png)
 ![](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot2.png)
 ![](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot3.png)
 
