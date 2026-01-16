@@ -1,10 +1,12 @@
-# GrokDevPrompt v0.2
+# GrokDevPrompt v0.3
 
 **Spec-driven prompt generator for Grok**  
-Build anything — games (Unity, Unreal, Three.js), apps (web, mobile, desktop), AI tools, blockchain dApps, VR/AR experiences, game mods, Steam-integrated projects — with extremely detailed, production-ready prompts.
+Create insanely detailed, production-ready development prompts for **anything**:  
+Unity/Unreal games, web/mobile/desktop apps, AI tools, blockchain dApps, VR/AR experiences, game mods, Steam-integrated projects, procedural worlds, and beyond.
 
-A beautiful, single-file HTML tool designed to help you craft insanely powerful prompts for Grok (xAI).  
-Perfect for beginners who want fast results and advanced prompt engineers who love recursive, self-evolving prompt experiments.
+Single-file HTML tool — beautiful dark cyberpunk interface, zero dependencies, fully responsive.
+
+Perfect for beginners wanting quick quality results and advanced users who enjoy **limitless recursive prompt engineering experiments**.
 
 ![screenshot](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot1.png)
 ![](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot2.png)
@@ -12,40 +14,42 @@ Perfect for beginners who want fast results and advanced prompt engineers who lo
 
 ## Core Features
 
-- Dark cyberpunk aesthetic (zero external dependencies)
-- 15+ project types (Web, Mobile, Unity, Unreal, VR/AR, AI/ML, Blockchain, Game Mods, Steamworks, IoT, CLI, API…)
-- 25+ common feature checkboxes (multiplayer, procedural generation, AI integration, Steam achievements, mod support, 4K graphics, monetization, cloud sync…)
-- Custom features (one per line)
+- 15+ project types (Web, Mobile, Unity, Unreal, VR/AR, AI/ML, Blockchain, Game Mods, Steamworks…)
+- 25+ common feature checkboxes (multiplayer, procedural gen, Steam achievements, mod support, 4K, AI integration, monetization…)
+- Custom features input
 - Tech stack, non-functional requirements & additional instructions
-- One-click prompt generation + copy to clipboard
-- Fully responsive — mobile & desktop
-- **Experimental features** (rabbit hole warning ⚠️):
-  - Truncate / multi-response mode (great for huge projects)
-  - **Prompt self-improvement loop** — lets Grok evolve this very tool with more targeted questions, recommendations, side-effect warnings, and now **theme control**
+- One-click copy-to-clipboard prompt generation
+- **Experimental features** (⚠️ rabbit hole territory):
+  - Truncate / multi-response mode (ideal for very large/complex projects)
+  - **Prompt self-improvement loop** — lets Grok evolve this very tool iteratively, getting smarter and more specific with each cycle
 
-## New in v0.2 — Self-Improvement Evolution
+## Self-Improvement Loop (v0.3 highlights)
 
-When you check **"Prompt self-improvement loop"**:
+When you enable **"Prompt self-improvement loop"**:
 
-- Grok generates an improved version of the tool (v0.2+) specialized to your current project
-- Adds **project-specific checkboxes** with benefit + side-effect tooltips
-- Shows **contextual recommendations/guidance** panel
-- Keeps the self-improvement checkbox **pre-checked** by default (loop continues until you uncheck it)
-- **New field**: "Desired visual theme / style / color scheme for the final product"  
-  → Prevents forcing the dark cyberpunk look onto your generated projects unless you want it  
-  → Examples: neon vaporwave, clean corporate light, retro 8-bit, high-contrast accessibility, etc.  
-  → Smart detection: if your current inputs already hint at a theme, it suggests a pre-fill value
+- Produces a **new specialized version** of the generator tailored to your current project
+- Tracks **iteration number** (#1 → #2 → #3…) so you know how deep you are
+- Shows **"not yet specified"** for empty fields instead of "none"
+- Adds project-specific feature checkboxes + benefit/side-effect tooltips
+- Shows contextual recommendations/guidance panel
+- Includes new optional field: **Desired visual theme/style/color scheme** for the final product  
+  (prevents forcing dark cyberpunk look onto every project unless you want it)
+- Keeps the self-improvement checkbox **pre-checked by default** — loop continues until you manually disable it
+- When truncate mode is active → uses clean multi-part response instructions without conflicting "do not truncate"
+
+→ Each generated version remains visually identical (same dark cyberpunk style) but becomes more intelligent about **your project**.
 
 ## How to Use
 
-1. Open `index.html` in any browser (or host it on GitHub Pages), or [here](https://medicinalsheep.github.io/grokdevprompt/) 
-2. Fill in your project basics, features, tech, etc.
+1. Open `index.html` (or use the live version: https://medicinalsheep.github.io/grokdevprompt/)
+2. Describe your project & select features
 3. (Optional) Enable experimental features
 4. Click **Generate Grok Prompt**
-5. Copy → paste directly into Grok
+5. Copy → paste to Grok
 
-Want an even better generator for your specific project?  
-Check **Prompt self-improvement loop**, generate, save the new HTML, open it, and repeat — each iteration gets smarter.
+Want a generator that’s hyper-specialized to **your exact project**?  
+Enable the self-improvement loop, generate, save the new HTML, open it, repeat.  
+Watch it evolve. 🌀
 
 ## License
 
