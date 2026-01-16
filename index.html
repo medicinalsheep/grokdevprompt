@@ -308,24 +308,32 @@
                     desc + ' ' + tech + ' ' + reqs + ' ' + add
                 );
 
+            const featuresStatus = commonFeaturesList.length > 0 ? commonFeaturesList.join(', ') : 'not yet specified';
+            const customStatus = customFeatures.length > 0 ? customFeatures.join(', ') : 'not yet specified';
+            const techStatus = tech || 'not yet specified';
+            const reqsStatus = reqs || 'not yet specified';
+            const addStatus = add || 'not yet specified';
+
             prompt = `You are an expert prompt engineer and full-stack developer specializing in highly effective, spec-driven prompt generator tools for Grok.
 
-Create an **improved & more targeted version** of GrokDevPrompt (call it v0.2 or higher) that keeps the **exact same dark cyberpunk visual theme** (background #0a192f, container #112240, accents #64ffda, monospace output, tooltips, etc.) as the current tool — **but adds intelligence about the final product's desired look**.
+Create an **improved & more targeted version** of the prompt generator tool at https://medicinalsheep.github.io/grokdevprompt/ — tailor it specifically to the user's current project context below, and note that this is self-improvement loop iteration #1 (increment the iteration number in future loops, e.g., #2, #3).
+
+Keep the **exact same dark cyberpunk visual theme** (background #0a192f, container #112240, accents #64ffda, monospace output, tooltips, etc.) as the original tool — **but add intelligence about the final product's desired look**.
 
 Current project context to specialize around:
 Project Type: ${type}
 Title: ${title}
 Description: ${desc}
-Common Features: ${commonFeaturesList.length > 0 ? commonFeaturesList.join(', ') : '(none)'}
-Custom Features: ${customFeatures.length > 0 ? customFeatures.join(', ') : '(none)'}
-Tech/Stack: ${tech || '(none)'}
-Non-functional: ${reqs || '(none)'}
-Additional: ${add || '(none)'}
+Common Features: ${featuresStatus}
+Custom Features: ${customStatus}
+Tech/Stack: ${techStatus}
+Non-functional: ${reqsStatus}
+Additional: ${addStatus}
 
 ### Required Improvements:
 
 1. **Add a new optional input field** right after "Additional Instructions / Constraints":
-   <label for="finalTheme">Desired visual theme / style / color scheme for the final product <span class="tooltip">?<span class="tooltiptext">Examples: dark mode cyberpunk, light minimalist, retro 8-bit, neon vaporwave, corporate blue, high-contrast accessibility. Leave empty for sensible project defaults.</span></span></label>
+   <label for="finalTheme">Desired visual theme / style / color scheme for the final product <span class="tooltip">?<span class="tooltiptext">Examples: neon cyberpunk, light minimalist, retro 8-bit, neon vaporwave, corporate blue, high-contrast accessibility. Leave empty for sensible project defaults.</span></span></label>
    <textarea id="finalTheme" placeholder="e.g., neon cyberpunk with purple accents\nor\nclean corporate light theme with blue primary"></textarea>
 
 2. If the current inputs already strongly indicate a theme (dark mode, retro, etc.), still add the field but pre-fill it with a best-guess value derived from the description/tech/requirements.
@@ -340,12 +348,12 @@ Additional: ${add || '(none)'}
    - Self-improvement checkbox retained & **pre-checked by default**
    - All original structure, truncate option support, etc.
 
-5. Update title to something like: "GrokDevPrompt v0.3 – ${type}-Specialized"
+5. Update title to something like: "Project-Specific Prompt Generator – Iteration #1 – ${type}-Specialized" (adjust iteration # as needed in future loops)
 
 6. Add at the end of the new HTML as comment:
-   <!-- Evolved via self-improvement loop from original GrokDevPrompt -->
+   <!-- Evolved via self-improvement loop from https://medicinalsheep.github.io/grokdevprompt/ -->
 
-Output the **complete single-file HTML** (CSS + JS embedded) ready to save & open. Preserve the polished UX, responsiveness, and copy functionality. Do not truncate.`;
+Output the **complete single-file HTML** (CSS + JS embedded) ready to save & open. Preserve the polished UX, responsiveness, and copy functionality.${isTruncate ? ' Mark truncated sections clearly with // TRUNCATED HERE and end each part with: "Reply \'ready\' to continue with the next part."' : ' Do not truncate.'}`;
         } else {
             // Normal generation (unchanged from previous version)
             let responseStyle = isTruncate ?
