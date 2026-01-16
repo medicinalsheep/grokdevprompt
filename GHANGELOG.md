@@ -5,6 +5,33 @@ All notable changes to GrokDevPrompt will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3] - 2026-01-15
+
+### Added / Improved
+
+- **Self-improvement loop refinements** (major focus of this version)
+  - The generated meta-prompt now correctly references the live tool URL:  
+    `https://medicinalsheep.github.io/grokdevprompt/`
+  - No longer calls the output "GrokDevPrompt vX.X" — instead produces a "Project-Specific Prompt Generator – Iteration #X – [project-type]-Specialized"
+  - Tracks and displays **self-improvement loop iteration number** (starts at #1, Grok should increment in subsequent generations)
+  - When fields are empty, now shows **"not yet specified"** instead of "none" for:  
+    Common Features, Custom Features, Tech/Stack, Non-functional Requirements, Additional Instructions
+  - When **Truncate or multiple response** is selected:  
+    → Removes the final "Do not truncate." sentence from the generated prompt  
+    → Keeps only the proper truncation instructions (`// TRUNCATED HERE` + "Reply 'ready' to continue...")
+
+### Fixed
+
+- Cleaner, more consistent wording in the self-improvement meta-prompt
+- Better separation between tool identity and project-specific specialization
+
+### Notes
+
+v0.3 is the first version where the self-improvement loop feels significantly more polished and self-aware —  
+the rabbit hole is now officially signposted with mile markers. 🌀
+
+Next iterations should get even more context-aware and project-tailored.
+
 ## [0.2] - 2026-01-14
 
 ### Added
