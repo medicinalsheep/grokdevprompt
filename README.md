@@ -4,7 +4,7 @@
 Create insanely detailed, production-ready development prompts for **anything**:  
 Unity/Unreal games, web/mobile/desktop apps, AI tools, blockchain dApps, VR/AR experiences, game mods, Steam-integrated projects, procedural worlds, and beyond.
 
-Single-file HTML tool — beautiful dark cyberpunk interface, zero dependencies, fully responsive.
+Single-file HTML tool with beautiful dark cyberpunk interface, zero dependencies, fully responsive.
 
 Perfect for beginners wanting quick quality results and advanced users who enjoy **limitless recursive prompt engineering experiments**.
 
