@@ -191,39 +191,55 @@
         <textarea id="description" placeholder="What does it do? Target users? Core value?"></textarea>
 
         <h2>Step 2: Features</h2>
-        <div class="checkbox-group" id="commonFeatures">
-            <!-- Features remain similar; you can expand later -->
-            <label><input type="checkbox" value="User authentication"> User login/registration</label>
-            <label><input type="checkbox" value="Responsive design"> Responsive (mobile + desktop)</label>
-            <label><input type="checkbox" value="Data persistence"> Data storage & persistence</label>
-            <label><input type="checkbox" value="Real-time updates"> Real-time features</label>
-            <label><input type="checkbox" value="Export options"> Export (PDF, Excel, images, etc.)</label>
-            <!-- Add more as needed -->
-        </div>
+<p>Check common features or add custom ones. Mix and match — this helps Grok consider what's truly needed.</p>
 
-        <label for="customFeatures">Custom Features (one per line)</label>
-        <textarea id="customFeatures" placeholder="Keyboard controls&#10;AI-powered suggestions"></textarea>
+<div class="checkbox-group" id="commonFeatures">
+    <label><input type="checkbox" value="User authentication and registration"> User login/registration (email, social, etc.)</label>
+    <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design (mobile + desktop)</label>
+    <label><input type="checkbox" value="Dark/light mode toggle"> Dark/light mode toggle</label>
+    <label><input type="checkbox" value="Data persistence and saving progress"> Data persistence / save states</label>
+    <label><input type="checkbox" value="Sound effects and background music"> Sound effects & music</label>
+    <label><input type="checkbox" value="Multiplayer support (real-time or turn-based)"> Multiplayer support</label>
+    <label><input type="checkbox" value="Animations and smooth transitions"> Animations & transitions</label>
+    <label><input type="checkbox" value="Search and filtering"> Search & filtering</label>
+    <label><input type="checkbox" value="Notifications and alerts"> Notifications / alerts</label>
+    <label><input type="checkbox" value="Export functionality (PDF, CSV, images)"> Export options (PDF, Excel, etc.)</label>
+    <label><input type="checkbox" value="Accessibility features"> Accessibility (screen readers, high contrast)</label>
+    <label><input type="checkbox" value="High-resolution / 4K support"> High-res graphics (4K/retina)</label>
+    <label><input type="checkbox" value="Procedural generation"> Procedural generation</label>
+    <label><input type="checkbox" value="Modding or user content support"> Modding / user-created content</label>
+    <label><input type="checkbox" value="Performance optimization"> Performance optimization</label>
+    <label><input type="checkbox" value="Security and data encryption"> Security features</label>
+    <label><input type="checkbox" value="Analytics and usage tracking"> Analytics / tracking</label>
+    <label><input type="checkbox" value="Cloud sync or backup"> Cloud syncing</label>
+    <label><input type="checkbox" value="Offline / PWA support"> Offline support</label>
+</div>
 
-        <h2>Step 3: Grok Capabilities & Tech</h2>
-        <label for="grokCapabilities">Grok Features to Leverage (check all that apply)</label>
-        <div class="checkbox-group" id="grokCapabilities">
-            <label><input type="checkbox" value="code_execution"> Code execution sandbox</label>
-            <label><input type="checkbox" value="file_operations"> File read/write/edit</label>
-            <label><input type="checkbox" value="web_search"> Web search & browsing</label>
-            <label><input type="checkbox" value="image_generation"> Image generation/editing</label>
-            <label><input type="checkbox" value="document_skills"> Document skills (docx, xlsx, pdf, pptx)</label>
-            <label><input type="checkbox" value="media_processing"> Media processing (ffmpeg)</label>
-            <label><input type="checkbox" value="render_components"> Rich output (citations, images, files)</label>
-        </div>
+<label for="customFeatures">Custom Features (one per line)</label>
+<textarea id="customFeatures" placeholder="e.g., Keyboard controls for movement&#10;AI-powered recommendations&#10;Achievement system"></textarea>
 
-        <label for="techStack">Preferred Tech Stack / Libraries</label>
-        <input type="text" id="techStack" placeholder="HTML/CSS/JS, React, Python, Node.js, etc.">
+     <h2>Step 3: Grok Capabilities & Tech</h2>
+<p>Select Grok features you want the final prompt to leverage.</p>
 
-        <label for="requirements">Non-Functional Requirements & Constraints</label>
-        <textarea id="requirements" placeholder="Performance, security, single-file, accessibility..."></textarea>
+<div class="checkbox-group" id="grokCapabilities">
+    <label><input type="checkbox" value="code_execution"> Code execution sandbox (Python, Node, etc.)</label>
+    <label><input type="checkbox" value="file_operations"> File read/write/edit operations</label>
+    <label><input type="checkbox" value="web_search"> Web search & page browsing</label>
+    <label><input type="checkbox" value="image_generation"> Image generation & editing</label>
+    <label><input type="checkbox" value="document_skills"> Document skills (docx, xlsx, pdf, pptx)</label>
+    <label><input type="checkbox" value="media_processing"> Media processing (ffmpeg, video/audio)</label>
+    <label><input type="checkbox" value="render_components"> Rich render components (images, citations, files)</label>
+    <label><input type="checkbox" value="iterative_development"> Iterative / multi-turn development</label>
+</div>
 
-        <label for="additional">Additional Instructions</label>
-        <textarea id="additional" placeholder="Iterative development, testing, comments..."></textarea>
+<label for="techStack">Preferred Tech Stack / Libraries (comma-separated)</label>
+<input type="text" id="techStack" placeholder="HTML/CSS/JS, React, Three.js, Python, Node.js, Electron...">
+
+<label for="requirements">Non-Functional Requirements</label>
+<textarea id="requirements" placeholder="60 FPS, mobile-friendly, single HTML file, accessible, secure..."></textarea>
+
+<label for="additional">Additional Instructions / Constraints</label>
+<textarea id="additional" placeholder="Heavy commenting, step-by-step implementation, testing instructions..."></textarea>
 
         <h2>Experimental Features</h2>
         <p class="warning">Warning: Rabbit hole territory 🌀</p>
@@ -279,9 +295,8 @@ Keep the dark cyberpunk aesthetic. Add better support for Grok's current tools, 
 Output the complete single-file HTML.`;
             } else {
                 // Main modern prompt
-                const allFeatures = [...commonFeatures, ...customFeatures];
-                const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c}`).join('\n') : 'None specified.';
-
+                const grokCaps = Array.from(document.querySelectorAll('#grokCapabilities input:checked')).map(cb => cb.value);
+const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace('_', ' ')}`).join('\n') : 'None specified. Use tools and skills when beneficial.';
                 prompt = `You are an expert full-stack developer with deep knowledge of Grok's capabilities (tools, sandbox, skills, render components).
 
 Build a complete, production-ready "${title}" — a ${type}.
