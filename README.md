@@ -1,62 +1,66 @@
-# GrokDevPrompt v0.3
+# GrokDevPrompt v0.4
 
-**Spec-driven prompt generator for Grok**  
-Create insanely detailed, production-ready development prompts for **anything**:  
-Unity/Unreal games, web/mobile/desktop apps, AI tools, blockchain dApps, VR/AR experiences, game mods, Steam-integrated projects, procedural worlds, and beyond.
+**Dynamic prompt architect for Grok** — now fully aware of modern Grok capabilities.
 
-Single-file HTML tool with beautiful dark cyberpunk interface, zero dependencies, fully responsive.
+Create insanely detailed, production-ready prompts for **anything**: games, web/mobile/desktop apps, AI agents, data tools, automations, and more.
 
-Perfect for beginners wanting quick quality results and advanced users who enjoy **limitless recursive prompt engineering experiments**.
+Single-file HTML tool • Beautiful dark cyberpunk interface • Zero dependencies • Fully responsive.
 
-![screenshot](https://github.com/medicinalsheep/grokdevprompt/blob/9a3260122541aaf6a4132694dc149719fd62dcfe/screenshots/screenshot1.png)
-![](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot2.png)
-![](https://github.com/medicinalsheep/grokdevprompt/blob/221abb15d6f987c239d01d49ec7cce46db828302/screenshots/screenshot3.png)
+---
+
+## What's New in v0.4
+
+- **Grok-native capabilities section** — explicitly leverage tools (code execution, web search, file ops), skills (docx, xlsx, pdf, pptx, ffmpeg, etc.), image generation, render components, and the sandbox environment.
+- Improved dynamic prompt generation with better structure for iterative development.
+- Enhanced self-improvement loop that understands current Grok features.
+- Cleaner UI/UX with live output and better mobile support.
+- Stronger emphasis on using Grok's full toolkit during project building.
+
+---
 
 ## Core Features
 
-- 15+ project types (Web, Mobile, Unity, Unreal, VR/AR, AI/ML, Blockchain, Game Mods, Steamworks…)
-- 25+ common feature checkboxes (multiplayer, procedural gen, Steam achievements, mod support, 4K, AI integration, monetization…)
-- Custom features input
+- 15+ project types (Web, Mobile, Games, AI Agents, Data Tools, CLI, Automation, etc.)
+- Smart feature checklists + custom features
+- Dedicated **Grok Capabilities** selector
 - Tech stack, non-functional requirements & additional instructions
-- One-click copy-to-clipboard prompt generation
-- **Experimental features** (⚠️ rabbit hole territory):
-  - Truncate / multi-response mode (ideal for very large/complex projects)
-  - **Prompt self-improvement loop** — lets Grok evolve this very tool iteratively, getting smarter and more specific with each cycle
+- One-click prompt generation + copy
+- **Experimental self-improvement loop** — evolve the tool itself with Grok (still the rabbit hole favorite)
+- Truncate / multi-response mode for very large projects
 
-## Self-Improvement Loop (v0.3 highlights)
-
-When you enable **"Prompt self-improvement loop"**:
-
-- Produces a **new specialized version** of the generator tailored to your current project
-- Tracks **iteration number** (#1 → #2 → #3…) so you know how deep you are
-- Shows **"not yet specified"** for empty fields instead of "none"
-- Adds project-specific feature checkboxes + benefit/side-effect tooltips
-- Shows contextual recommendations/guidance panel
-- Includes new optional field: **Desired visual theme/style/color scheme** for the final product  
-  (prevents forcing dark cyberpunk look onto every project unless you want it)
-- Keeps the self-improvement checkbox **pre-checked by default** — loop continues until you manually disable it
-- When truncate mode is active → uses clean multi-part response instructions without conflicting "do not truncate"
-
-→ Each generated version remains visually identical (same dark cyberpunk style) but becomes more intelligent about **your project**.
+---
 
 ## How to Use
 
-1. Open `index.html` (or use the live version: https://medicinalsheep.github.io/grokdevprompt/)
-2. Describe your project & select features
+1. Open `index.html` (or go to the [live version](https://medicinalsheep.github.io/grokdevprompt/))
+2. Fill in your project details and select desired Grok capabilities
 3. (Optional) Enable experimental features
 4. Click **Generate Grok Prompt**
-5. Copy → paste to Grok
+5. Copy → paste directly into Grok
 
-Want a generator that’s hyper-specialized to **your exact project**?  
-Enable the self-improvement loop, generate, save the new HTML, open it, repeat.  
-Watch it evolve. 🌀
+**Pro tip**: Enable the self-improvement loop to get a hyper-specialized version of the generator tailored to your current project. Save the new HTML and repeat for deeper specialization.
+
+---
+
+## Self-Improvement Loop
+
+When enabled, the tool asks Grok to generate an improved version of itself that is more intelligent about:
+- Your specific project domain
+- Current Grok tools & skills
+- Iterative development workflows
+- Visual theming and output preferences
+
+Each iteration gets smarter. Watch the tool evolve. 🌀
+
+---
 
 ## License
 
 MIT License — see [LICENSE](LICENSE)
 
 Made with love & curiosity in California  
-✦ Powered by Grok (xAI) ✦  
+✦ Powered by Grok (xAI) ✦
+
 https://github.com/medicinalsheep/grokdevprompt
 
 Justin White / [medicinalsheep](https://github.com/medicinalsheep) / [@jyt1776](https://x.com/jyt1776)
