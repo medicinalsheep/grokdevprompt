@@ -1,66 +1,49 @@
 # GrokDevPrompt v0.4
 
-**Dynamic prompt architect for Grok** — now fully aware of modern Grok capabilities.
+**Dynamic, Grok-native prompt architect.** Now with full awareness of tools, skills, sandbox, render components, and modern capabilities.
 
-Create insanely detailed, production-ready prompts for **anything**: games, web/mobile/desktop apps, AI agents, data tools, automations, and more.
+Create detailed, production-ready prompts for games, apps, AI agents, data tools, automations, and more.
 
-Single-file HTML tool • Beautiful dark cyberpunk interface • Zero dependencies • Fully responsive.
+Single-file HTML • Dark cyberpunk UI • Zero dependencies.
 
----
-
-## What's New in v0.4
-
-- **Grok-native capabilities section** — explicitly leverage tools (code execution, web search, file ops), skills (docx, xlsx, pdf, pptx, ffmpeg, etc.), image generation, render components, and the sandbox environment.
-- Improved dynamic prompt generation with better structure for iterative development.
-- Enhanced self-improvement loop that understands current Grok features.
-- Cleaner UI/UX with live output and better mobile support.
-- Stronger emphasis on using Grok's full toolkit during project building.
+![Screenshot 1](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot1.png)
+![Screenshot 2](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot2.png)
+![Screenshot 3](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot3.png)
 
 ---
 
-## Core Features
+## Key Features
 
-- 15+ project types (Web, Mobile, Games, AI Agents, Data Tools, CLI, Automation, etc.)
-- Smart feature checklists + custom features
-- Dedicated **Grok Capabilities** selector
-- Tech stack, non-functional requirements & additional instructions
-- One-click prompt generation + copy
-- **Experimental self-improvement loop** — evolve the tool itself with Grok (still the rabbit hole favorite)
-- Truncate / multi-response mode for very large projects
+- **Rich feature checklists** — helps users (and Grok) thoughtfully decide what’s needed
+- Dedicated **Grok Capabilities** section (tools, skills, file ops, image gen, document tools, ffmpeg, etc.)
+- Expansive yet manageable common features + unlimited custom features
+- Self-improvement loop for evolving the tool itself
+- Truncate/multi-response mode for large projects
 
 ---
 
 ## How to Use
 
-1. Open `index.html` (or go to the [live version](https://medicinalsheep.github.io/grokdevprompt/))
-2. Fill in your project details and select desired Grok capabilities
-3. (Optional) Enable experimental features
+1. Open the [live tool](https://medicinalsheep.github.io/grokdevprompt/) or `index.html`
+2. Fill in project basics
+3. Check relevant features and Grok capabilities
 4. Click **Generate Grok Prompt**
-5. Copy → paste directly into Grok
+5. Copy and paste into Grok
 
-**Pro tip**: Enable the self-improvement loop to get a hyper-specialized version of the generator tailored to your current project. Save the new HTML and repeat for deeper specialization.
+**Pro tip**: Enable the self-improvement loop to get a specialized version of the generator tailored to your project.
 
 ---
 
-## Self-Improvement Loop
+## Experimental Features
 
-When enabled, the tool asks Grok to generate an improved version of itself that is more intelligent about:
-- Your specific project domain
-- Current Grok tools & skills
-- Iterative development workflows
-- Visual theming and output preferences
-
-Each iteration gets smarter. Watch the tool evolve. 🌀
+- **Self-improvement loop** — Grok evolves the tool iteratively (highly recommended for power users)
+- **Truncate mode** — useful for very complex projects
 
 ---
 
 ## License
 
-MIT License — see [LICENSE](LICENSE)
+MIT License
 
-Made with love & curiosity in California  
-✦ Powered by Grok (xAI) ✦
-
+Made with love & curiosity • Powered by Grok (xAI)  
 https://github.com/medicinalsheep/grokdevprompt
-
-Justin White / [medicinalsheep](https://github.com/medicinalsheep) / [@jyt1776](https://x.com/jyt1776)
