@@ -1,4 +1,4 @@
-![GrokDevPrompt Icon](https://github.com/medicinalsheep/grokdevprompt/blob/main/icons/favicon-32.png) # GrokDevPrompt v0.4.2
+# GrokDevPrompt v0.4.2
 
 **Dynamic, Grok-native prompt architect.** Now with full awareness of tools, skills, sandbox, render components, image/video generation, and modern capabilities. Updated mobile responsiveness and improved self-improvement loop that explicitly references the live tool.
 
