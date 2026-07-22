@@ -1,10 +1,10 @@
-# GrokDevPrompt v0.4
+# GrokDevPrompt v0.4.2
 
-**Dynamic, Grok-native prompt architect.** Now with full awareness of tools, skills, sandbox, render components, and modern capabilities.
+**Dynamic, Grok-native prompt architect.** Now with full awareness of tools, skills, sandbox, render components, image/video generation, and modern capabilities. Updated mobile responsiveness and improved self-improvement loop that explicitly references the live tool.
 
 Create detailed, production-ready prompts for games, apps, AI agents, data tools, automations, and more.
 
-Single-file HTML • Dark cyberpunk UI • Zero dependencies.
+Single-file HTML • Dark cyberpunk UI with new rocket + GDP icon • Zero dependencies.
 
 ![Screenshot 1](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot1.png)
 ![Screenshot 2](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot2.png)
