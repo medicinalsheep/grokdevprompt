@@ -1,5 +1,7 @@
 # GrokDevPrompt v0.4.2
 
+![GrokDevPrompt Icon](https://github.com/medicinalsheep/grokdevprompt/blob/main/icons/appicon512.png)
+
 **Dynamic, Grok-native prompt architect.** Now with full awareness of tools, skills, sandbox, render components, image/video generation, and modern capabilities. Updated mobile responsiveness and improved self-improvement loop that explicitly references the live tool.
 
 Create detailed, production-ready prompts for games, apps, AI agents, data tools, automations, and more.
@@ -24,13 +26,17 @@ Single-file HTML • Dark cyberpunk UI with new rocket + GDP icon • Zero depen
 
 ## How to Use
 
-1. Open the [live tool](https://medicinalsheep.github.io/grokdevprompt/) or `index.html`
-2. Fill in project basics
-3. Check relevant features and Grok capabilities
-4. Click **Generate Grok Prompt**
-5. Copy and paste into Grok
+You have three easy ways to use GrokDevPrompt:
 
-**Pro tip**: Enable the self-improvement loop to get a specialized version of the generator tailored to your project.
+1. **Fastest (Recommended)**: Copy this link and paste it into a new Grok chat:  
+   `https://medicinalsheep.github.io/grokdevprompt/`  
+   Then simply say: *"Design a prompt for me using this tool"* (or describe your project).
+
+2. **Interactive**: Open the [live tool](https://medicinalsheep.github.io/grokdevprompt/), fill in your project basics, check relevant features and Grok capabilities, then click **Generate Grok Prompt**.
+
+3. **Local**: Clone or download this repo and open `index.html` directly in your browser.
+
+**Pro tip**: Enable the **self-improvement loop** checkbox to get a specialized, evolved version of the generator tailored to your specific project.
 
 ---
 
