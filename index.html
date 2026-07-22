@@ -322,69 +322,24 @@
             let prompt = '';
 
             if (isSelfImprove) {
-                prompt = `You are an expert prompt engineer. Create an improved v0.4+ version of GrokDevPrompt specialized for this project. Keep the dark cyberpunk style.\n\nProject: ${type} - ${title}\nDescription: ${desc}\n\nOutput the full single-file HTML.`;
+                prompt = `You are an expert prompt engineer and frontend developer.
+
+You are currently using GrokDevPrompt v0.4.1 — the live version is available here:
+→ https://medicinalsheep.github.io/grokdevprompt/
+
+Improve and evolve this exact tool. Make it better, more capable, cleaner, or more powerful while keeping the dark cyberpunk aesthetic, excellent UX, and full awareness of Grok's modern capabilities (tools, skills, sandbox, render components, image/video gen, etc.).
+
+Project context: ${type} - ${title}
+Description: ${desc}
+
+Output the complete single-file HTML for the new improved version.`;
             } else {
                 const allFeatures = [...commonFeatures, ...customFeatures];
                 const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace('_', ' ')}`).join('\n') : 'None specified.';
 
                 prompt = `You are an expert full-stack developer with full access to Grok's tools and skills.
 
-Build a complete "${title}" (${type}).
-
-**Description**: ${desc}
-
-**Key Features**:
-${allFeatures.length ? allFeatures.map(f => `- ${f}`).join('\n') : '- None specified'}
-
-**Grok Capabilities to Leverage**:
-${capabilitiesStr}
-
-**Tech Stack**: ${tech || 'Best modern choice'}
-
-**Requirements**: ${reqs || 'High quality, performant, polished'}
-
-**Additional Instructions**: ${add || 'None'}
-
-Provide a detailed plan first, then full implementation with code blocks. Use tools/skills where helpful.`;
-            }
-
-            const outputEl = document.getElementById('output');
-            outputEl.textContent = prompt;
-            outputEl.style.display = 'block';
-            document.getElementById('copyBtn').style.display = 'block';
-        }
-
-        function copyPrompt() {
-            const output = document.getElementById('output').textContent;
-            navigator.clipboard.writeText(output).then(() => alert('✅ Prompt copied to clipboard!'));
-        }
-    </script>
-</body>
-</html>
-            const type = document.getElementById('projectType').value;
-            const title = document.getElementById('title').value.trim() || 'My Project';
-            const desc = document.getElementById('description').value.trim() || 'A complete project.';
-
-            const commonFeatures = Array.from(document.querySelectorAll('#commonFeatures input[type="checkbox"]:checked')).map(cb => cb.value);
-            const grokCaps = Array.from(document.querySelectorAll('#grokCapabilities input[type="checkbox"]:checked')).map(cb => cb.value);
-            const customFeatures = document.getElementById('customFeatures').value.trim().split('\n').filter(f => f.trim());
-
-            const tech = document.getElementById('techStack').value.trim();
-            const reqs = document.getElementById('requirements').value.trim();
-            const add = document.getElementById('additional').value.trim();
-
-            const isTruncate = document.getElementById('truncateCheckbox').checked;
-            const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
-
-            let prompt = '';
-
-            if (isSelfImprove) {
-                prompt = `You are an expert prompt engineer. Create an improved v0.4+ version of GrokDevPrompt specialized for this project. Keep the dark cyberpunk style.\n\nProject: ${type} - ${title}\nDescription: ${desc}\n\nOutput the full single-file HTML.`;
-            } else {
-                const allFeatures = [...commonFeatures, ...customFeatures];
-                const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace('_', ' ')}`).join('\n') : 'None specified.';
-
-                prompt = `You are an expert full-stack developer with full access to Grok's tools and skills.
+You have full awareness of the current GrokDevPrompt tool (v0.4.1) available at https://medicinalsheep.github.io/grokdevprompt/. Use its style, structure, and feature philosophy as a strong reference when relevant.
 
 Build a complete "${title}" (${type}).
 
