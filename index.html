@@ -85,7 +85,7 @@
         .checkbox-group {
             margin-top: 1rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 12px;
         }
         .checkbox-group label {
@@ -95,14 +95,21 @@
             font-weight: normal;
             color: var(--text);
             cursor: pointer;
+            line-height: 1.4;
         }
-        .checkbox-group input { margin-right: 10px; margin-top: 3px; accent-color: var(--primary); }
-        .warning { color: #ffcc00; font-weight: bold; }
+        .checkbox-group input { 
+            margin-right: 10px; 
+            margin-top: 3px; 
+            accent-color: var(--primary); 
+            flex-shrink: 0;
+        }
         .mode-selector {
             display: flex;
-            gap: 12px;
-            margin-bottom: 1rem;
+            gap: 20px;
+            margin: 1rem 0;
+            flex-wrap: wrap;
         }
+        .warning { color: #ffcc00; font-weight: bold; }
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -120,7 +127,6 @@
         <h1>GrokDevPrompt v0.4.3</h1>
         <p class="intro-p">Dynamic, Grok-native prompt architect. Now with full awareness of tools, skills, sandbox, and modern capabilities.</p>
 
-        <!-- New Mode Selector -->
         <label>Generation Mode</label>
         <div class="mode-selector">
             <label><input type="radio" name="mode" value="regular" checked> Regular Prompt</label>
@@ -208,22 +214,20 @@
     </div>
 
     <script>
-        // Load saved form state
         function loadFormState() {
             const saved = localStorage.getItem('grokDevPromptState');
             if (saved) {
                 const data = JSON.parse(saved);
                 Object.keys(data).forEach(key => {
-                    const el = document.getElementById(key);
+                    const el = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
                     if (el) {
                         if (el.type === 'checkbox' || el.type === 'radio') el.checked = data[key];
-                        else el.value = data[key];
+                        else if (el) el.value = data[key];
                     }
                 });
             }
         }
 
-        // Save form state
         function saveFormState() {
             const state = {};
             document.querySelectorAll('input, textarea, select').forEach(el => {
@@ -252,19 +256,20 @@
                 prompt += `You are an expert prompt engineer and developer using GrokDevPrompt v0.4.3.
 Live version: https://medicinalsheep.github.io/grokdevprompt/
 
-Improve and evolve this tool or build the requested project with iterative, agent-style workflow.
+Improve and evolve this tool or build the requested project with full iterative workflow.
 
 Project: ${title} (${type})
 Description: ${desc}
 
-Use full tool + skill capabilities. Think step-by-step. Maintain state across responses.`;
+Use full tool + skill capabilities. Think step-by-step.`;
             } else {
                 const allFeatures = [...commonFeatures, ...customFeatures];
                 const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace(/_/g, ' ')}`).join('\n') : '- None specified.';
 
-                prompt += `You are Grok, built by xAI.
+                prompt += `You are an expert full-stack developer with full access to Grok's tools and skills.
 
-**Project**: ${title} (${type})
+Build a complete "${title}" (${type}).
+
 **Description**: ${desc}
 
 **Key Features**:
@@ -273,11 +278,11 @@ ${allFeatures.length ? allFeatures.map(f => `- ${f}`).join('\n') : '- None speci
 **Grok Capabilities to Leverage**:
 ${capabilitiesStr}
 
-**Tech Stack**: ${tech || 'Modern best practices'}
+**Tech Stack**: ${tech || 'Best modern choice'}
 **Requirements**: ${reqs || 'High quality, performant, polished'}
 **Additional Instructions**: ${add || 'None'}
 
-Think step-by-step. Use tools, skills, and render components when helpful. Provide a clear plan first, then implementation.`;
+Provide a detailed plan first, then full implementation with code blocks. Use tools/skills where helpful.`;
             }
 
             if (isTruncate) prompt += "\n\n[TRUNCATE MODE: Continue in follow-up responses as needed.]";
@@ -292,10 +297,9 @@ Think step-by-step. Use tools, skills, and render components when helpful. Provi
 
         function copyPrompt() {
             const output = document.getElementById('output').textContent;
-            navigator.clipboard.writeText(output).then(() => alert('✅ Prompt copied!'));
+            navigator.clipboard.writeText(output).then(() => alert('✅ Prompt copied to clipboard!'));
         }
 
-        // Event listeners
         window.onload = () => {
             loadFormState();
             document.querySelectorAll('input, textarea, select').forEach(el => {
