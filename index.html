@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GrokDevPrompt v0.4.2</title>
+    <title>GrokDevPrompt v0.4.3</title>
     <link rel="icon" type="image/png" href="icons/favicon-32.png">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <style>
@@ -55,7 +55,7 @@
         input:focus, textarea:focus, select:focus { border-color: var(--primary); outline: none; }
         textarea { height: 120px; resize: vertical; }
         button {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             padding: clamp(14px, 4vw, 18px) 28px;
             background: var(--primary);
             color: #0a192f;
@@ -98,6 +98,11 @@
         }
         .checkbox-group input { margin-right: 10px; margin-top: 3px; accent-color: var(--primary); }
         .warning { color: #ffcc00; font-weight: bold; }
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -112,9 +117,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>GrokDevPrompt v0.4.2</h1>
+        <h1>GrokDevPrompt v0.4.3</h1>
         <p class="intro-p">Dynamic, Grok-native prompt architect. Now with full awareness of tools, skills, sandbox, and modern capabilities.</p>
-        
+
+        <!-- New Mode Selector -->
+        <label>Generation Mode</label>
+        <div class="mode-selector">
+            <label><input type="radio" name="mode" value="regular" checked> Regular Prompt</label>
+            <label><input type="radio" name="mode" value="loop"> Agent / Loop Mode</label>
+        </div>
+
         <h2>Step 1: Project Basics</h2>
         <label for="projectType">Project Type</label>
         <select id="projectType">
@@ -135,9 +147,8 @@
         <textarea id="description" placeholder="What does it do? Target users? Core value?"></textarea>
 
         <h2>Step 2: Features</h2>
-        <p>Check common features or add custom ones. This forces thoughtful decisions and makes prompts significantly better.</p>
+        <p>Check common features or add custom ones.</p>
         <div class="checkbox-group" id="commonFeatures">
-            <!-- Your existing checkboxes remain unchanged -->
             <label><input type="checkbox" value="User authentication and registration"> User login/registration</label>
             <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design</label>
             <label><input type="checkbox" value="Dark/light mode toggle"> Dark/light mode toggle</label>
@@ -159,7 +170,7 @@
             <label><input type="checkbox" value="Offline / PWA support"> Offline support</label>
         </div>
         <label for="customFeatures">Custom Features (one per line)</label>
-        <textarea id="customFeatures" placeholder="e.g., Keyboard controls for movement&#10;AI-powered recommendations&#10;Achievement system"></textarea>
+        <textarea id="customFeatures" placeholder="e.g., Keyboard controls for movement&#10;AI-powered recommendations"></textarea>
 
         <h2>Step 3: Grok Capabilities & Tech</h2>
         <p>Select Grok features the generated prompt should leverage.</p>
@@ -185,7 +196,6 @@
         <p class="warning">Warning: Rabbit hole territory 🌀</p>
         <div class="checkbox-group">
             <label><input type="checkbox" id="truncateCheckbox"> Truncate / multi-response mode</label>
-            <label><input type="checkbox" id="selfImproveCheckbox"> Prompt self-improvement / Loop mode</label>
         </div>
 
         <button onclick="generatePrompt()">Generate Grok Prompt</button>
@@ -193,12 +203,38 @@
         <button id="copyBtn" onclick="copyPrompt()">Copy to Clipboard</button>
 
         <footer>
-            GrokDevPrompt v0.4.2 • <a href="https://github.com/medicinalsheep/grokdevprompt" target="_blank">GitHub</a>
+            GrokDevPrompt v0.4.3 • <a href="https://github.com/medicinalsheep/grokdevprompt" target="_blank">GitHub</a>
         </footer>
     </div>
 
     <script>
+        // Load saved form state
+        function loadFormState() {
+            const saved = localStorage.getItem('grokDevPromptState');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.keys(data).forEach(key => {
+                    const el = document.getElementById(key);
+                    if (el) {
+                        if (el.type === 'checkbox' || el.type === 'radio') el.checked = data[key];
+                        else el.value = data[key];
+                    }
+                });
+            }
+        }
+
+        // Save form state
+        function saveFormState() {
+            const state = {};
+            document.querySelectorAll('input, textarea, select').forEach(el => {
+                if (el.type === 'checkbox' || el.type === 'radio') state[el.id || el.name] = el.checked;
+                else state[el.id] = el.value;
+            });
+            localStorage.setItem('grokDevPromptState', JSON.stringify(state));
+        }
+
         function generatePrompt() {
+            const mode = document.querySelector('input[name="mode"]:checked').value;
             const type = document.getElementById('projectType').value;
             const title = document.getElementById('title').value.trim() || 'My Project';
             const desc = document.getElementById('description').value.trim() || 'A complete project.';
@@ -208,26 +244,25 @@
             const tech = document.getElementById('techStack').value.trim();
             const reqs = document.getElementById('requirements').value.trim();
             const add = document.getElementById('additional').value.trim();
-            const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
+            const isTruncate = document.getElementById('truncateCheckbox').checked;
 
-            let prompt = '';
+            let prompt = `GrokDevPrompt v0.4.3 - Generated ${new Date().toISOString().slice(0,16).replace('T',' ')}\n\n`;
 
-            if (isSelfImprove) {
-                prompt = `You are an expert prompt engineer and frontend developer.
-You are currently using GrokDevPrompt v0.4.2 — the live version is available here:
-→ https://medicinalsheep.github.io/grokdevprompt/
+            if (mode === 'loop') {
+                prompt += `You are an expert prompt engineer and developer using GrokDevPrompt v0.4.3.
+Live version: https://medicinalsheep.github.io/grokdevprompt/
 
-Improve and evolve this exact tool. Make it better, more capable, cleaner, or more powerful while keeping the dark cyberpunk aesthetic, excellent UX, and full awareness of Grok's modern capabilities.
+Improve and evolve this tool or build the requested project with iterative, agent-style workflow.
 
-Project context: ${type} - ${title}
+Project: ${title} (${type})
 Description: ${desc}
 
-Output the complete single-file HTML for the new improved version.`;
+Use full tool + skill capabilities. Think step-by-step. Maintain state across responses.`;
             } else {
                 const allFeatures = [...commonFeatures, ...customFeatures];
                 const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace(/_/g, ' ')}`).join('\n') : '- None specified.';
 
-                prompt = `You are Grok, built by xAI. You are helpful, truthful, and highly capable with full access to tools, skills, sandbox, and render components.
+                prompt += `You are Grok, built by xAI.
 
 **Project**: ${title} (${type})
 **Description**: ${desc}
@@ -239,24 +274,34 @@ ${allFeatures.length ? allFeatures.map(f => `- ${f}`).join('\n') : '- None speci
 ${capabilitiesStr}
 
 **Tech Stack**: ${tech || 'Modern best practices'}
-**Requirements**: ${reqs || 'High quality, performant, polished UI/UX'}
+**Requirements**: ${reqs || 'High quality, performant, polished'}
 **Additional Instructions**: ${add || 'None'}
 
-Think step-by-step. Use tools and skills when helpful. Provide a clear plan first, then full implementation.`;
+Think step-by-step. Use tools, skills, and render components when helpful. Provide a clear plan first, then implementation.`;
             }
+
+            if (isTruncate) prompt += "\n\n[TRUNCATE MODE: Continue in follow-up responses as needed.]";
 
             const outputEl = document.getElementById('output');
             outputEl.textContent = prompt;
             outputEl.style.display = 'block';
             document.getElementById('copyBtn').style.display = 'block';
+
+            saveFormState();
         }
 
         function copyPrompt() {
             const output = document.getElementById('output').textContent;
-            navigator.clipboard.writeText(output).then(() => {
-                alert('✅ Prompt copied to clipboard!');
-            });
+            navigator.clipboard.writeText(output).then(() => alert('✅ Prompt copied!'));
         }
+
+        // Event listeners
+        window.onload = () => {
+            loadFormState();
+            document.querySelectorAll('input, textarea, select').forEach(el => {
+                el.addEventListener('change', saveFormState);
+            });
+        };
     </script>
 </body>
 </html>
