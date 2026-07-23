@@ -131,4 +131,132 @@
         </select>
         <label for="title">Project Title/Name</label>
         <input type="text" id="title" placeholder="e.g., Nebula Explorer or Smart Budget Tracker">
-        <label for="
+        <label for="description">High-Level Description</label>
+        <textarea id="description" placeholder="What does it do? Target users? Core value?"></textarea>
+
+        <h2>Step 2: Features</h2>
+        <p>Check common features or add custom ones. This forces thoughtful decisions and makes prompts significantly better.</p>
+        <div class="checkbox-group" id="commonFeatures">
+            <!-- Your existing checkboxes remain unchanged -->
+            <label><input type="checkbox" value="User authentication and registration"> User login/registration</label>
+            <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design</label>
+            <label><input type="checkbox" value="Dark/light mode toggle"> Dark/light mode toggle</label>
+            <label><input type="checkbox" value="Data persistence and saving progress"> Data persistence / save states</label>
+            <label><input type="checkbox" value="Sound effects and background music"> Sound effects & music</label>
+            <label><input type="checkbox" value="Multiplayer support (real-time or turn-based)"> Multiplayer support</label>
+            <label><input type="checkbox" value="Animations and smooth transitions"> Animations & transitions</label>
+            <label><input type="checkbox" value="Search and filtering"> Search & filtering</label>
+            <label><input type="checkbox" value="Notifications and alerts"> Notifications / alerts</label>
+            <label><input type="checkbox" value="Export functionality (PDF, CSV, images)"> Export options</label>
+            <label><input type="checkbox" value="Accessibility features"> Accessibility features</label>
+            <label><input type="checkbox" value="High-resolution graphics support"> High-res graphics (4K/retina)</label>
+            <label><input type="checkbox" value="Procedural generation"> Procedural generation</label>
+            <label><input type="checkbox" value="Modding or user content support"> Modding / user content</label>
+            <label><input type="checkbox" value="Performance optimization"> Performance optimization</label>
+            <label><input type="checkbox" value="Security and data encryption"> Security features</label>
+            <label><input type="checkbox" value="Analytics and usage tracking"> Analytics / tracking</label>
+            <label><input type="checkbox" value="Cloud sync or backup"> Cloud syncing</label>
+            <label><input type="checkbox" value="Offline / PWA support"> Offline support</label>
+        </div>
+        <label for="customFeatures">Custom Features (one per line)</label>
+        <textarea id="customFeatures" placeholder="e.g., Keyboard controls for movement&#10;AI-powered recommendations&#10;Achievement system"></textarea>
+
+        <h2>Step 3: Grok Capabilities & Tech</h2>
+        <p>Select Grok features the generated prompt should leverage.</p>
+        <div class="checkbox-group" id="grokCapabilities">
+            <label><input type="checkbox" value="code_execution"> Code execution sandbox</label>
+            <label><input type="checkbox" value="file_operations"> File read/write/edit</label>
+            <label><input type="checkbox" value="web_search"> Web search & browsing</label>
+            <label><input type="checkbox" value="image_generation"> Image generation/editing</label>
+            <label><input type="checkbox" value="document_skills"> Document skills (docx/xlsx/pdf/etc.)</label>
+            <label><input type="checkbox" value="media_processing"> Media processing (ffmpeg)</label>
+            <label><input type="checkbox" value="render_components"> Rich render components</label>
+            <label><input type="checkbox" value="iterative_development"> Iterative development workflow</label>
+        </div>
+
+        <label for="techStack">Preferred Tech Stack / Libraries</label>
+        <input type="text" id="techStack" placeholder="HTML/CSS/JS, React, Three.js, Python, Node.js...">
+        <label for="requirements">Non-Functional Requirements</label>
+        <textarea id="requirements" placeholder="60 FPS, mobile-friendly, single file, accessible..."></textarea>
+        <label for="additional">Additional Instructions / Constraints</label>
+        <textarea id="additional" placeholder="Heavy commenting, step-by-step, testing..."></textarea>
+
+        <h2>Experimental Features</h2>
+        <p class="warning">Warning: Rabbit hole territory 🌀</p>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="truncateCheckbox"> Truncate / multi-response mode</label>
+            <label><input type="checkbox" id="selfImproveCheckbox"> Prompt self-improvement / Loop mode</label>
+        </div>
+
+        <button onclick="generatePrompt()">Generate Grok Prompt</button>
+        <div id="output"></div>
+        <button id="copyBtn" onclick="copyPrompt()">Copy to Clipboard</button>
+
+        <footer>
+            GrokDevPrompt v0.4.2 • <a href="https://github.com/medicinalsheep/grokdevprompt" target="_blank">GitHub</a>
+        </footer>
+    </div>
+
+    <script>
+        function generatePrompt() {
+            const type = document.getElementById('projectType').value;
+            const title = document.getElementById('title').value.trim() || 'My Project';
+            const desc = document.getElementById('description').value.trim() || 'A complete project.';
+            const commonFeatures = Array.from(document.querySelectorAll('#commonFeatures input[type="checkbox"]:checked')).map(cb => cb.value);
+            const grokCaps = Array.from(document.querySelectorAll('#grokCapabilities input[type="checkbox"]:checked')).map(cb => cb.value);
+            const customFeatures = document.getElementById('customFeatures').value.trim().split('\n').filter(f => f.trim());
+            const tech = document.getElementById('techStack').value.trim();
+            const reqs = document.getElementById('requirements').value.trim();
+            const add = document.getElementById('additional').value.trim();
+            const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
+
+            let prompt = '';
+
+            if (isSelfImprove) {
+                prompt = `You are an expert prompt engineer and frontend developer.
+You are currently using GrokDevPrompt v0.4.2 — the live version is available here:
+→ https://medicinalsheep.github.io/grokdevprompt/
+
+Improve and evolve this exact tool. Make it better, more capable, cleaner, or more powerful while keeping the dark cyberpunk aesthetic, excellent UX, and full awareness of Grok's modern capabilities.
+
+Project context: ${type} - ${title}
+Description: ${desc}
+
+Output the complete single-file HTML for the new improved version.`;
+            } else {
+                const allFeatures = [...commonFeatures, ...customFeatures];
+                const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace(/_/g, ' ')}`).join('\n') : '- None specified.';
+
+                prompt = `You are Grok, built by xAI. You are helpful, truthful, and highly capable with full access to tools, skills, sandbox, and render components.
+
+**Project**: ${title} (${type})
+**Description**: ${desc}
+
+**Key Features**:
+${allFeatures.length ? allFeatures.map(f => `- ${f}`).join('\n') : '- None specified.'}
+
+**Grok Capabilities to Leverage**:
+${capabilitiesStr}
+
+**Tech Stack**: ${tech || 'Modern best practices'}
+**Requirements**: ${reqs || 'High quality, performant, polished UI/UX'}
+**Additional Instructions**: ${add || 'None'}
+
+Think step-by-step. Use tools and skills when helpful. Provide a clear plan first, then full implementation.`;
+            }
+
+            const outputEl = document.getElementById('output');
+            outputEl.textContent = prompt;
+            outputEl.style.display = 'block';
+            document.getElementById('copyBtn').style.display = 'block';
+        }
+
+        function copyPrompt() {
+            const output = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(output).then(() => {
+                alert('✅ Prompt copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
