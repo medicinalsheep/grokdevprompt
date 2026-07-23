@@ -1,53 +1,43 @@
-# GrokDevPrompt v0.4.2
+# GrokDevPrompt v0.5
 
-**Dynamic, Grok-native prompt architect.** Now with full awareness of tools, skills, sandbox, render components, image/video generation, and modern capabilities. Updated mobile responsiveness and improved self-improvement loop that explicitly references the live tool.
+**The ultimate spec-driven prompt architect for Grok.**
 
-Create detailed, production-ready prompts for games, apps, AI agents, data tools, automations, and more.
+A powerful, beautiful single-file tool that helps you generate extremely detailed, production-ready prompts for building games, apps, tools, AI systems, and more.
 
-Single-file HTML • Dark cyberpunk UI with new rocket + GDP icon • Zero dependencies.
-
-![Screenshot 1](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot1.png)
-![Screenshot 2](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot2.png)
-![Screenshot 3](https://github.com/medicinalsheep/grokdevprompt/blob/main/screenshots/screenshot3.png)
-
----
+Now with refined **self-improvement loop** capabilities, better truncation handling, and stronger alignment with Grok’s modern features.
 
 ## Key Features
 
-- **Rich feature checklists** — helps users (and Grok) thoughtfully decide what’s needed
-- Dedicated **Grok Capabilities** section (tools, skills, file ops, image gen, document tools, ffmpeg, etc.)
-- Expansive yet manageable common features + unlimited custom features
-- Self-improvement loop for evolving the tool itself
-- Truncate/multi-response mode for large projects
-
----
+- Clean dark cyberpunk interface (zero dependencies)
+- 15+ project types (Unity, Unreal, VR/AR, AI/ML, Blockchain, Game Mods, Steam integration, etc.)
+- Rich common features + custom features input
+- Grok Capabilities & Tech section
+- **Experimental Features** (⚠️ rabbit hole territory):
+  - **Truncate or multiple response** mode – clean multi-part output handling
+  - **Prompt self-improvement loop** – iteratively evolves this very tool to become more tailored to your specific project
+- Desired visual theme control for the final product
+- One-click copy to clipboard
 
 ## How to Use
 
-You have three easy ways to use GrokDevPrompt:
+**Fastest (Recommended):** Copy this link and paste it into a new Grok chat:  
+https://medicinalsheep.github.io/grokdevprompt/  
+Then simply say: "Design a prompt for me using this tool" (or describe your project).
 
-1. **Fastest (Recommended)**: Copy this link and paste it into a new Grok chat:  
-   `https://medicinalsheep.github.io/grokdevprompt/`  
-   Then simply say: *"Design a prompt for me using this tool"* (or describe your project).
+**Interactive:** Open the live tool, fill in your project basics, check relevant features and Grok capabilities, then click **Generate Grok Prompt**.
 
-2. **Interactive**: Open the [live tool](https://medicinalsheep.github.io/grokdevprompt/), fill in your project basics, check relevant features and Grok capabilities, then click **Generate Grok Prompt**.
+**Local:** Clone or download this repo and open `index.html` directly in your browser.
 
-3. **Local**: Clone or download this repo and open `index.html` directly in your browser.
+## Self-Improvement Loop
 
-**Pro tip**: Enable the **self-improvement loop** checkbox to get a specialized, evolved version of the generator tailored to your specific project.
-
----
-
-## Experimental Features
-
-- **Self-improvement loop** — Grok evolves the tool iteratively (highly recommended for power users)
-- **Truncate mode** — useful for very complex projects
-
----
+When enabled, the tool will generate an improved version of itself — more specialized to your project with additional relevant questions, recommendations, and refinements. Each iteration gets smarter. Use 2–3 times for best results on complex projects.
 
 ## License
 
-MIT License
+MIT License — feel free to fork, modify, and evolve.
 
-Made with love & curiosity • Powered by Grok (xAI)  
+---
+
+Made with curiosity & love in California  
+✦ Powered by Grok (xAI) ✦  
 https://github.com/medicinalsheep/grokdevprompt
