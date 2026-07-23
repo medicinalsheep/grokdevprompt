@@ -89,14 +89,34 @@
 
         <h2>Step 2: Features</h2>
         <div class="checkbox-group" id="commonFeatures">
-            <!-- Many checkboxes would go here - abbreviated for brevity. Add your expanded list from before -->
-            <label><input type="checkbox" value="User authentication"> User authentication</label>
-            <label><input type="checkbox" value="Multiplayer support"> Multiplayer support</label>
-            <label><input type="checkbox" value="Responsive design"> Responsive design</label>
-            <label><input type="checkbox" value="Procedural generation"> Procedural generation</label>
-            <label><input type="checkbox" value="AI integration"> AI integration</label>
-            <!-- ... add more as needed ... -->
-        </div>
+    <label><input type="checkbox" value="User login and registration"> User login and registration</label>
+    <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design (mobile & desktop)</label>
+    <label><input type="checkbox" value="Dark mode toggle"> Dark mode toggle</label>
+    <label><input type="checkbox" value="Score tracking or progress saving"> Score tracking / progress saving</label>
+    <label><input type="checkbox" value="Sound effects and music"> Sound effects and music</label>
+    <label><input type="checkbox" value="Multiplayer support"> Multiplayer support</label>
+    <label><input type="checkbox" value="Data storage (local or database)"> Data storage</label>
+    <label><input type="checkbox" value="Animations and transitions"> Animations and smooth transitions</label>
+    <label><input type="checkbox" value="Search functionality"> Search functionality</label>
+    <label><input type="checkbox" value="Notifications or alerts"> Notifications / alerts</label>
+    <label><input type="checkbox" value="Sharing options"> Sharing options</label>
+    <label><input type="checkbox" value="Accessibility features"> Accessibility features</label>
+    <label><input type="checkbox" value="High-resolution graphics support (4K, retina)"> High-resolution graphics (4K/retina)</label>
+    <label><input type="checkbox" value="Cross-platform compatibility"> Cross-platform compatibility</label>
+    <label><input type="checkbox" value="AI integration"> AI integration</label>
+    <label><input type="checkbox" value="VR/AR support"> VR/AR support</label>
+    <label><input type="checkbox" value="Monetization (in-app purchases, ads)"> Monetization features</label>
+    <label><input type="checkbox" value="Analytics and tracking"> Analytics & tracking</label>
+    <label><input type="checkbox" value="Cloud syncing"> Cloud syncing</label>
+    <label><input type="checkbox" value="Procedural generation"> Procedural generation</label>
+    <label><input type="checkbox" value="Modding support"> Modding support</label>
+    <label><input type="checkbox" value="Steamworks integration"> Steamworks integration</label>
+    <label><input type="checkbox" value="Physics engine"> Physics engine</label>
+    <label><input type="checkbox" value="Internationalization (i18n)"> Internationalization (i18n)</label>
+    <label><input type="checkbox" value="Offline support / PWA"> Offline support (PWA)</label>
+    <label><input type="checkbox" value="Security features"> Security features</label>
+    <label><input type="checkbox" value="Performance optimization"> Performance optimization</label>
+</div>
 
         <label for="customFeatures">Custom Features (one per line)</label>
         <textarea id="customFeatures" placeholder="Feature 1&#10;Feature 2"></textarea>
@@ -111,13 +131,11 @@
         <label for="additional">Additional Instructions / Constraints</label>
         <textarea id="additional" placeholder="Any extra rules..."></textarea>
 
-        <!-- New Theme Field (appears in evolved versions) -->
-        <div id="themeSection" style="display:none;">
-            <label for="finalTheme">Desired visual theme / style / color scheme for the final product 
-                <span class="tooltip">?<span class="tooltiptext">Examples: neon cyberpunk, clean minimalist, retro 8-bit, corporate blue...</span></span>
-            </label>
-            <textarea id="finalTheme" placeholder="Leave empty for sensible defaults"></textarea>
-        </div>
+            <!-- Desired Visual Theme Field -->
+        <label for="finalTheme">Desired visual theme / style / color scheme for the final product 
+            <span class="tooltip">?<span class="tooltiptext">Examples: neon cyberpunk, clean minimalist light, retro 8-bit, corporate blue, high-contrast. Leave empty for sensible defaults.</span></span>
+        </label>
+        <textarea id="finalTheme" placeholder="Leave empty for sensible defaults"></textarea>
 
         <h2>Experimental Features</h2>
         <p class="warning">Warning: You might go down the rabbit hole 🌀</p>
@@ -149,7 +167,7 @@
         const tech = document.getElementById('techStack').value.trim();
         const reqs = document.getElementById('requirements').value.trim();
         const add = document.getElementById('additional').value.trim();
-        const finalTheme = document.getElementById('finalTheme') ? document.getElementById('finalTheme').value.trim() : '';
+        const finalTheme = document.getElementById('finalTheme').value.trim();
 
         const isTruncate = document.getElementById('truncateCheckbox').checked;
         const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
@@ -157,18 +175,15 @@
         let prompt = '';
 
         if (isSelfImprove) {
-            // === SELF-IMPROVEMENT LOOP META-PROMPT ===
             const featuresStatus = commonFeaturesList.length > 0 ? commonFeaturesList.join(', ') : 'not yet specified';
             const customStatus = customFeatures.length > 0 ? customFeatures.join(', ') : 'not yet specified';
 
             prompt = `You are an expert prompt engineer and full-stack developer specializing in building highly effective, spec-driven prompt generator tools for Grok.
 
-Create an **improved version** of the prompt generator tool at https://medicinalsheep.github.io/grokdevprompt/. 
-This is **self-improvement loop iteration #1** (increment the iteration number in future generations, e.g. #2, #3).
+Create an **improved version** of the tool at https://medicinalsheep.github.io/grokdevprompt/. 
+This is **self-improvement loop iteration #1** (increment the number in future generations).
 
-Keep the exact same dark cyberpunk visual theme and overall structure as the original tool.
-
-Current project context to specialize around:
+Current project context:
 - Project Type: ${type}
 - Title: ${title}
 - Description: ${desc}
@@ -179,20 +194,18 @@ Current project context to specialize around:
 - Additional Instructions: ${add || 'not yet specified'}
 
 ### Required Improvements:
-1. Add / improve project-specific feature checkboxes with benefit + side-effect tooltips.
-2. Add a Recommendations/Guidance section with contextual advice.
-3. Include the "Desired visual theme / style / color scheme for the final product" field (with tooltip).
+1. Add project-specific feature checkboxes with benefit + side-effect tooltips.
+2. Add a Recommendations / Guidance section with contextual advice.
+3. Keep the "Desired visual theme" field visible by default.
 4. Keep the self-improvement checkbox pre-checked by default.
-5. Maintain strong support for the truncate option.
-6. Preserve the original spec-driven development best practices in the generated prompts (Development Plan, Implementation Checklist, iterative code delivery).
-7. Update the title to reflect the iteration and project type.
+5. Maintain clean support for the truncate option.
+6. Preserve the original spec-driven development best practices.
 
-Output the **complete single-file HTML** (with embedded CSS + JS) ready to use. Do not truncate.`;
+Output the **complete single-file HTML** (CSS + JS embedded) ready to use. Do not truncate.`;
         } else {
-            // === STANDARD PROMPT GENERATION ===
             let responseStyle = isTruncate 
-                ? `Implement iteratively. Responses can be truncated if necessary; clearly mark truncated sections with "// TRUNCATED HERE" and end each response with: "Reply 'ready' to continue with the next part."`
-                : `For each major part, provide complete, working code in a single response when possible. Do not truncate.`;
+                ? `You may deliver the response in multiple parts if the project is very large. Always provide complete, ready-to-use code blocks for each major section (HTML, CSS, full JS, etc.).`
+                : `Provide complete, working code in a single response when possible. Do not truncate.`;
 
             prompt = `You are an expert full-stack developer and game/engine programmer, specializing in complete, production-ready projects.
 
@@ -217,16 +230,15 @@ Follow spec-driven development best practices:
 First, create a detailed Development Plan: break down into modules/components, architecture overview, file structure.
 Then, provide a step-by-step Implementation Checklist with testable tasks.
 ${responseStyle}
-Include all necessary code (HTML, CSS, JavaScript, etc.).
+Include all necessary HTML, CSS, JavaScript (and other files if needed).
 Make it responsive, performant, and polished.
-Add helpful comments explaining key parts.
+Add comments explaining key parts.
 At the end, provide clear instructions on how to run/test it.
 If it's a game or interactive tool, ensure it's engaging and bug-free.
 
 Output the full implementation in fenced code blocks, ready to copy and run.`;
         }
 
-        // Display output
         const outputEl = document.getElementById('output');
         outputEl.textContent = prompt;
         outputEl.style.display = 'block';
