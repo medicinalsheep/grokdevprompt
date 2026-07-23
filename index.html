@@ -14,7 +14,6 @@
             --text: #ccd6f6;
             --accent: #233554;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg);
@@ -24,7 +23,6 @@
             line-height: 1.6;
             font-size: clamp(14px, 3.5vw, 16px);
         }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -34,22 +32,8 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.6);
             box-sizing: border-box;
         }
-
-        h1 {
-            text-align: center;
-            color: var(--primary);
-            margin: 0 0 8px 0;
-            font-size: clamp(1.8rem, 8vw, 2.8rem);
-            line-height: 1.1;
-        }
-
-        .intro-p {
-            text-align: center;
-            color: #8892b0;
-            margin-bottom: 2rem;
-            font-size: clamp(0.95rem, 4vw, 1.1rem);
-        }
-
+        h1 { text-align: center; color: var(--primary); margin: 0 0 8px 0; font-size: clamp(1.8rem, 8vw, 2.8rem); }
+        .intro-p { text-align: center; color: #8892b0; margin-bottom: 2rem; font-size: clamp(0.95rem, 4vw, 1.1rem); }
         h2 {
             color: #ffffff;
             border-bottom: 2px solid #233554;
@@ -57,15 +41,7 @@
             margin: 2.5rem 0 1.25rem;
             font-size: clamp(1.4rem, 6vw, 1.9rem);
         }
-
-        label {
-            display: block;
-            margin-top: 1.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            font-size: 1.05em;
-        }
-
+        label { display: block; margin-top: 1.5rem; font-weight: bold; color: #ffffff; font-size: 1.05em; }
         input, textarea, select {
             width: 100%;
             padding: clamp(10px, 3vw, 14px);
@@ -73,22 +49,11 @@
             border: 1px solid #334d6e;
             border-radius: 8px;
             box-sizing: border-box;
-            font-size: inherit;
             background: var(--accent);
             color: var(--text);
-            transition: border-color 0.3s ease;
         }
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-
-        textarea {
-            height: 120px;
-            resize: vertical;
-            font-size: inherit;
-        }
-
+        input:focus, textarea:focus, select:focus { border-color: var(--primary); outline: none; }
+        textarea { height: 120px; resize: vertical; }
         button {
             margin-top: 2rem;
             padding: clamp(14px, 4vw, 18px) 28px;
@@ -99,17 +64,9 @@
             font-size: clamp(1.1rem, 5vw, 1.25rem);
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
             width: 100%;
         }
-
-        button:hover {
-            background: #52d6b8;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
-        }
-
+        button:hover { background: #52d6b8; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3); }
         #output {
             margin-top: 2rem;
             padding: 20px;
@@ -120,29 +77,17 @@
             font-family: monospace;
             color: var(--text);
             display: none;
-            font-size: 0.95em;
             overflow-x: auto;
             max-height: 55vh;
             overflow-y: auto;
-            line-height: 1.5;
         }
-
-        #copyBtn {
-            margin-top: 12px;
-            padding: 12px 24px;
-            background: var(--primary);
-            color: #0a192f;
-            width: auto;
-            display: none;
-            font-weight: bold;
-        }
+        #copyBtn { margin-top: 12px; padding: 12px 24px; background: var(--primary); color: #0a192f; width: auto; display: none; font-weight: bold; }
         .checkbox-group {
             margin-top: 1rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
             gap: 12px;
         }
-
         .checkbox-group label {
             display: flex;
             align-items: flex-start;
@@ -150,30 +95,9 @@
             font-weight: normal;
             color: var(--text);
             cursor: pointer;
-            font-size: 0.95em;
-            line-height: 1.4;
         }
-
-        .checkbox-group input {
-            margin-right: 10px;
-            margin-top: 3px;
-            width: auto;
-            accent-color: var(--primary);
-            flex-shrink: 0;
-        }
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: help;
-            margin-left: 6px;
-            color: var(--primary);
-        }
-
-        .warning {
-            color: #ffcc00;
-            font-weight: bold;
-        }
-
+        .checkbox-group input { margin-right: 10px; margin-top: 3px; accent-color: var(--primary); }
+        .warning { color: #ffcc00; font-weight: bold; }
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -182,39 +106,15 @@
             padding-top: 2rem;
             border-top: 1px solid #233554;
         }
-
-        footer a { 
-            color: var(--primary); 
-            text-decoration: none; 
-        }
+        footer a { color: var(--primary); text-decoration: none; }
         footer a:hover { color: #52d6b8; }
-
-        /* Extra breathing room and tighter controls on very small portrait screens */
-        @media (max-width: 480px) {
-            body { 
-                padding: 12px; 
-            }
-            .container { 
-                padding: 20px; 
-                border-radius: 12px; 
-            }
-            h2 { 
-                margin-top: 2rem; 
-            }
-            textarea { 
-                height: 100px; 
-            }
-            #output {
-                max-height: 45vh;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>GrokDevPrompt v0.4.2</h1>
         <p class="intro-p">Dynamic, Grok-native prompt architect. Now with full awareness of tools, skills, sandbox, and modern capabilities.</p>
-
+        
         <h2>Step 1: Project Basics</h2>
         <label for="projectType">Project Type</label>
         <select id="projectType">
@@ -229,149 +129,6 @@
             <option value="automation">Automation / Workflow</option>
             <option value="other">Other</option>
         </select>
-
         <label for="title">Project Title/Name</label>
         <input type="text" id="title" placeholder="e.g., Nebula Explorer or Smart Budget Tracker">
-
-        <label for="description">High-Level Description</label>
-        <textarea id="description" placeholder="What does it do? Target users? Core value?"></textarea>
-
-        <h2>Step 2: Features</h2>
-        <p>Check common features or add custom ones. This forces thoughtful decisions and makes prompts significantly better.</p>
-
-        <div class="checkbox-group" id="commonFeatures">
-            <label><input type="checkbox" value="User authentication and registration"> User login/registration</label>
-            <label><input type="checkbox" value="Responsive design for mobile and desktop"> Responsive design</label>
-            <label><input type="checkbox" value="Dark/light mode toggle"> Dark/light mode toggle</label>
-            <label><input type="checkbox" value="Data persistence and saving progress"> Data persistence / save states</label>
-            <label><input type="checkbox" value="Sound effects and background music"> Sound effects & music</label>
-            <label><input type="checkbox" value="Multiplayer support (real-time or turn-based)"> Multiplayer support</label>
-            <label><input type="checkbox" value="Animations and smooth transitions"> Animations & transitions</label>
-            <label><input type="checkbox" value="Search and filtering"> Search & filtering</label>
-            <label><input type="checkbox" value="Notifications and alerts"> Notifications / alerts</label>
-            <label><input type="checkbox" value="Export functionality (PDF, CSV, images)"> Export options</label>
-            <label><input type="checkbox" value="Accessibility features"> Accessibility features</label>
-            <label><input type="checkbox" value="High-resolution graphics support"> High-res graphics (4K/retina)</label>
-            <label><input type="checkbox" value="Procedural generation"> Procedural generation</label>
-            <label><input type="checkbox" value="Modding or user content support"> Modding / user content</label>
-            <label><input type="checkbox" value="Performance optimization"> Performance optimization</label>
-            <label><input type="checkbox" value="Security and data encryption"> Security features</label>
-            <label><input type="checkbox" value="Analytics and usage tracking"> Analytics / tracking</label>
-            <label><input type="checkbox" value="Cloud sync or backup"> Cloud syncing</label>
-            <label><input type="checkbox" value="Offline / PWA support"> Offline support</label>
-        </div>
-
-        <label for="customFeatures">Custom Features (one per line)</label>
-        <textarea id="customFeatures" placeholder="e.g., Keyboard controls for movement&#10;AI-powered recommendations&#10;Achievement system"></textarea>
-
-        <h2>Step 3: Grok Capabilities & Tech</h2>
-        <p>Select Grok features the generated prompt should leverage.</p>
-
-        <div class="checkbox-group" id="grokCapabilities">
-            <label><input type="checkbox" value="code_execution"> Code execution sandbox</label>
-            <label><input type="checkbox" value="file_operations"> File read/write/edit</label>
-            <label><input type="checkbox" value="web_search"> Web search & browsing</label>
-            <label><input type="checkbox" value="image_generation"> Image generation/editing</label>
-            <label><input type="checkbox" value="document_skills"> Document skills (docx/xlsx/pdf/etc.)</label>
-            <label><input type="checkbox" value="media_processing"> Media processing (ffmpeg)</label>
-            <label><input type="checkbox" value="render_components"> Rich render components</label>
-            <label><input type="checkbox" value="iterative_development"> Iterative development workflow</label>
-        </div>
-
-        <label for="techStack">Preferred Tech Stack / Libraries</label>
-        <input type="text" id="techStack" placeholder="HTML/CSS/JS, React, Three.js, Python, Node.js...">
-
-        <label for="requirements">Non-Functional Requirements</label>
-        <textarea id="requirements" placeholder="60 FPS, mobile-friendly, single file, accessible..."></textarea>
-
-        <label for="additional">Additional Instructions / Constraints</label>
-        <textarea id="additional" placeholder="Heavy commenting, step-by-step, testing..."></textarea>
-
-        <h2>Experimental Features</h2>
-        <p class="warning">Warning: Rabbit hole territory 🌀</p>
-        <div class="checkbox-group">
-            <label><input type="checkbox" id="truncateCheckbox"> Truncate / multi-response mode</label>
-            <label><input type="checkbox" id="selfImproveCheckbox"> Prompt self-improvement loop</label>
-        </div>
-
-        <button onclick="generatePrompt()">Generate Grok Prompt</button>
-
-        <div id="output"></div>
-        <button id="copyBtn" onclick="copyPrompt()">Copy to Clipboard</button>
-
-        <footer>
-            GrokDevPrompt v0.4.2 • <a href="https://github.com/medicinalsheep/grokdevprompt" target="_blank">GitHub</a>
-        </footer>
-    </div>
-
-    <script>
-        function generatePrompt() {
-            const type = document.getElementById('projectType').value;
-            const title = document.getElementById('title').value.trim() || 'My Project';
-            const desc = document.getElementById('description').value.trim() || 'A complete project.';
-
-            const commonFeatures = Array.from(document.querySelectorAll('#commonFeatures input[type="checkbox"]:checked')).map(cb => cb.value);
-            const grokCaps = Array.from(document.querySelectorAll('#grokCapabilities input[type="checkbox"]:checked')).map(cb => cb.value);
-            const customFeatures = document.getElementById('customFeatures').value.trim().split('\n').filter(f => f.trim());
-
-            const tech = document.getElementById('techStack').value.trim();
-            const reqs = document.getElementById('requirements').value.trim();
-            const add = document.getElementById('additional').value.trim();
-
-            const isTruncate = document.getElementById('truncateCheckbox').checked;
-            const isSelfImprove = document.getElementById('selfImproveCheckbox').checked;
-
-            let prompt = '';
-
-            if (isSelfImprove) {
-                prompt = `You are an expert prompt engineer and frontend developer.
-
-You are currently using GrokDevPrompt v0.4.2 — the live version is available here:
-→ https://medicinalsheep.github.io/grokdevprompt/
-
-Improve and evolve this exact tool. Make it better, more capable, cleaner, or more powerful while keeping the dark cyberpunk aesthetic, excellent UX, and full awareness of Grok's modern capabilities (tools, skills, sandbox, render components, image/video gen, etc.).
-
-Project context: ${type} - ${title}
-Description: ${desc}
-
-Output the complete single-file HTML for the new improved version.`;
-            } else {
-                const allFeatures = [...commonFeatures, ...customFeatures];
-                const capabilitiesStr = grokCaps.length ? grokCaps.map(c => `- ${c.replace('_', ' ')}`).join('\n') : 'None specified.';
-
-                prompt = `You are an expert full-stack developer with full access to Grok's tools and skills.
-
-You have full awareness of the current GrokDevPrompt tool (v0.4.2) available at https://medicinalsheep.github.io/grokdevprompt/. Use its style, structure, and feature philosophy as a strong reference when relevant.
-
-Build a complete "${title}" (${type}).
-
-**Description**: ${desc}
-
-**Key Features**:
-${allFeatures.length ? allFeatures.map(f => `- ${f}`).join('\n') : '- None specified'}
-
-**Grok Capabilities to Leverage**:
-${capabilitiesStr}
-
-**Tech Stack**: ${tech || 'Best modern choice'}
-
-**Requirements**: ${reqs || 'High quality, performant, polished'}
-
-**Additional Instructions**: ${add || 'None'}
-
-Provide a detailed plan first, then full implementation with code blocks. Use tools/skills where helpful.`;
-            }
-
-            const outputEl = document.getElementById('output');
-            outputEl.textContent = prompt;
-            outputEl.style.display = 'block';
-            document.getElementById('copyBtn').style.display = 'block';
-        }
-
-        function copyPrompt() {
-            const output = document.getElementById('output').textContent;
-            navigator.clipboard.writeText(output).then(() => alert('✅ Prompt copied to clipboard!'));
-        }
-    </script>
-</body>
-</html>
+        <label for="
